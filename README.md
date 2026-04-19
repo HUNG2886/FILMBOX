@@ -31,6 +31,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Import the GitHub repo in [Vercel](https://vercel.com/new). Set **Environment Variables** (Project → Settings):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `DATABASE_URL` — use a hosted **PostgreSQL** URL (e.g. [Neon](https://neon.tech)); SQLite files are not suitable for Vercel’s runtime. After switching the Prisma datasource to `postgresql`, run migrations against that database.
+- `AUTH_SECRET` — long random string (production).
+- `ADMIN_EMAIL` / `ADMIN_PASSWORD` — for `prisma db seed` if you seed the production DB once.
+
+Marketing and admin routes use `dynamic = "force-dynamic"` so `next build` does not require a database at build time; the app still needs `DATABASE_URL` when handling requests.
+
+See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
