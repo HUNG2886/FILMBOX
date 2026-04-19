@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f6fa;
+  --foreground: #191b23;
+  --surface: #ffffff;
+  --surface-elevated: #fdfdff;
+  --card-border: #d8dbe8;
+  --muted: #62657a;
+  --accent: #e93b81;
+  --accent-strong: #c72d6d;
+  --accent-soft: #ffd6e8;
+  --focus-ring: #6c63ff;
+  --success: #1f9d62;
+  --warning: #db8a06;
+  --danger: #d73f3f;
+  --overlay: rgba(7, 10, 20, 0.72);
+  --brand-1: #ff4f9a;
+  --brand-2: #ff8a38;
+}
+
+.dark {
+  --background: #0c0f1a;
+  --foreground: #f5f7ff;
+  --surface: #171b2b;
+  --surface-elevated: #1f2437;
+  --card-border: #2c344d;
+  --muted: #a6afc7;
+  --accent: #ff5ca4;
+  --accent-strong: #ff3f93;
+  --accent-soft: #432137;
+  --focus-ring: #8f8bff;
+  --success: #52d79a;
+  --warning: #f9c45d;
+  --danger: #ff8d8d;
+  --overlay: rgba(7, 10, 20, 0.78);
+  --brand-1: #ff5ca4;
+  --brand-2: #ff9a56;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--surface);
+  --color-card-elevated: var(--surface-elevated);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-focus-ring: var(--focus-ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-overlay: var(--overlay);
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+/* Cuộn ngang trên mobile, ẩn thanh scrollbar */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--brand-1), var(--brand-2));
+  color: #fff;
+  border: 1px solid color-mix(in oklab, var(--brand-1), #000 8%);
+  box-shadow: 0 8px 20px color-mix(in oklab, var(--brand-1), transparent 75%);
+}
+
+.btn-primary:hover {
+  filter: saturate(1.08) brightness(1.03);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.poster-overlay {
+  background: linear-gradient(
+    to top,
+    var(--overlay) 0%,
+    color-mix(in oklab, var(--overlay), transparent 45%) 48%,
+    transparent 100%
+  );
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

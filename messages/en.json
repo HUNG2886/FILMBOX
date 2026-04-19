@@ -1,0 +1,276 @@
+{
+  "Metadata": {
+    "title": "DramaBox — Short dramas",
+    "description": "Discover short drama series you will love.",
+    "titleTemplate": "%s — DramaBox (demo)"
+  },
+  "Nav": {
+    "forYou": "For you",
+    "browse": "Browse",
+    "resources": "Resources",
+    "categories": "Categories",
+    "home": "Home",
+    "browseGenres": "Browse genres",
+    "articlesResources": "Articles & resources"
+  },
+  "Header": {
+    "brand": "DramaBox",
+    "support": "Support",
+    "supportToastTitle": "Customer support",
+    "supportToastDesc": "Support channels will open soon.",
+    "account": "Account",
+    "accountToastTitle": "Account",
+    "accountToastDesc": "Sign-in (Google / Apple / Facebook) would open in a modal — this demo is not connected.",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "languagePicker": "Language"
+  },
+  "Search": {
+    "label": "Search",
+    "placeholder": "Search"
+  },
+  "Footer": {
+    "aboutTitle": "About us",
+    "contactTitle": "Contact us",
+    "community": "Community",
+    "communityHub": "Community hub",
+    "emailLabel": "Email:",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy",
+    "cookie": "Cookie policy",
+    "dpo": "DPO",
+    "business": "Business partnerships",
+    "careers": "Careers",
+    "socialFacebook": "Facebook",
+    "socialYoutube": "Youtube",
+    "socialTiktok": "Tiktok",
+    "socialUnsetHint": "Set NEXT_PUBLIC_SOCIAL_* in .env to enable this link",
+    "disclaimer": "© Learning demo — not affiliated with DramaBox. Legal pages and support routes are hosted on this site; set contact and social URLs in .env."
+  },
+  "Banner": {
+    "close": "Close",
+    "body": "More great content lives in the app — this demo only recreates the web UI.",
+    "openApp": "Open",
+    "openToastTitle": "Open app",
+    "openToastDesc": "The demo is not linked to an official store listing."
+  },
+  "Theme": {
+    "darkOn": "Dark theme on",
+    "lightOn": "Light theme on",
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
+  "Hero": {
+    "carouselLabel": "Featured titles",
+    "episodes": "{count} eps",
+    "viewDetails": "View details",
+    "slide": "Slide {n}",
+    "emptyCarousel": "No carousel titles yet. Sign in to admin and enable “Carousel” on a movie."
+  },
+  "Sections": {
+    "recommended": "Worth watching",
+    "trending": "Trending now",
+    "featured": "Featured episodes",
+    "seeMore": "See more",
+    "seeMoreTitle": "See more {title}"
+  },
+  "Badge": {
+    "exclusive": "Exclusive"
+  },
+  "Poster": {
+    "aria": "{title}, {count} episodes"
+  },
+  "Genres": {
+    "title": "All genres",
+    "description": "This page mirrors the Browse tab on dramaboxdb: a genre list that leads into filtered titles.",
+    "metaTitle": "All genres — DramaBox (demo)",
+    "metaDescription": "Explore short dramas by genre (demo).",
+    "detailMetaFallback": "Genre",
+    "breadcrumb": "Genres",
+    "detailIntroBefore": "Demo: shows the full catalog. In production, the API would filter by genre",
+    "detailIntroAfter": "."
+  },
+  "SearchPage": {
+    "metaTitle": "Search — DramaBox (demo)",
+    "title": "Search",
+    "introBefore": "The",
+    "introAfter": "route matches dramaboxdb-style behavior.",
+    "results": "Results ({count})",
+    "suggestions": "Suggestions for you",
+    "empty": "No matching titles. Try another keyword.",
+    "moreGenres": "See also:",
+    "moreGenresLink": "Browse genres"
+  },
+  "Content": {
+    "metaTitle": "Resources & articles — DramaBox (demo)",
+    "metaDescription": "Articles and resources (demo), similar to /content on dramaboxdb.",
+    "title": "Resources",
+    "introBefore": "Article hub (SEO / reviews). Each item links to",
+    "introAfter": ".",
+    "articleMetaFallback": "Article",
+    "breadcrumb": "Resources",
+    "bodyPlaceholder": "Placeholder body copy. Swap in MDX or CMS content. Paths mirror the /content model on dramaboxdb."
+  },
+  "Channels": {
+    "metaFallback": "Channel",
+    "breadcrumbHome": "Home",
+    "mustSees": {
+      "title": "Worth watching",
+      "description": "Curated picks (similar to /channel/must-sees)."
+    },
+    "trending": {
+      "title": "Trending now",
+      "description": "Trending shelf (similar to /channel/trending)."
+    },
+    "hiddenGems": {
+      "title": "Featured episodes",
+      "description": "Hidden gems (similar to /channel/hidden-gems)."
+    }
+  },
+  "Movie": {
+    "metaFallback": "Title",
+    "noSynopsis": "No extended synopsis in this demo.",
+    "relatedSearch": "Find related titles",
+    "viewGenres": "Browse genres",
+    "urlSample": "Sample URL: /movie/{bookId}/{slug}",
+    "breadcrumbHome": "Home",
+    "episodes": "{count} episodes"
+  },
+  "Business": {
+    "metaTitle": "Business — DramaBox (demo)",
+    "title": "Business partnerships",
+    "introBefore": "Demo page modeled after",
+    "introAfter": "on dramaboxdb. In production, copy usually routes inquiries by partnership type.",
+    "item1": "Short drama distribution: email <email>partner@example.com</email> (placeholder).",
+    "item2": "Script / subtitles: email <email>script@example.com</email> (placeholder).",
+    "item3": "English production: email <email>production@example.com</email> (placeholder).",
+    "backHome": "← Back to home"
+  },
+  "LegalTerms": {
+    "metaTitle": "Terms of use — DramaBox (demo)",
+    "title": "Terms of use",
+    "p1": "These terms govern your use of this demo website. By browsing or using the service, you agree to them.",
+    "p2": "The site is provided for learning and demonstration. Content, availability, and features may change without notice.",
+    "p3": "You agree not to misuse the service (including attempting unauthorized access, scraping in ways that harm performance, or violating applicable law).",
+    "p4": "Intellectual property: branding and UI patterns shown here are illustrative. Third-party names may appear for comparison only.",
+    "p5": "Disclaimer: the service is provided “as is” without warranties to the extent permitted by law.",
+    "p6": "We may update these terms; continued use after changes means you accept the revised version."
+  },
+  "LegalPrivacy": {
+    "metaTitle": "Privacy policy — DramaBox (demo)",
+    "title": "Privacy policy",
+    "p1": "This policy explains what data this demo may process and why.",
+    "p2": "When you browse pages, typical web logs (such as IP address, user agent, and timestamps) may be stored by hosting infrastructure for security and debugging.",
+    "p3": "If you contact us by email, we process your message content and address to respond.",
+    "p4": "Admin sign-in uses a session cookie (HTTP-only) to keep you signed in; it is not readable by page scripts.",
+    "p5": "We do not sell your personal data. Analytics or third-party trackers are not required for this demo unless you add them later.",
+    "p6": "Depending on your region, you may have rights to access, correct, or delete personal data. Contact the DPO route for requests.",
+    "p7": "If this demo is extended with accounts or payments, this policy should be reviewed with legal counsel before production use."
+  },
+  "LegalCookies": {
+    "metaTitle": "Cookie policy — DramaBox (demo)",
+    "title": "Cookie policy",
+    "p1": "This site may use cookies and similar technologies only as needed for basic operation.",
+    "p2": "Session cookies: if you use admin features, an HTTP-only cookie stores your signed session token.",
+    "p3": "Preference cookies: theme (light/dark) may be stored locally in the browser for usability.",
+    "p4": "You can control cookies through your browser settings. Blocking essential cookies may break sign-in.",
+    "p5": "If you add marketing or analytics cookies later, list them here and obtain consent where required."
+  },
+  "LegalDpo": {
+    "metaTitle": "Data protection officer — DramaBox (demo)",
+    "title": "Data protection officer (DPO)",
+    "p1": "For privacy-related questions or requests (including access or deletion where applicable), contact the address below.",
+    "p2prefix": "",
+    "p2suffix": " is the designated contact for this demo configuration.",
+    "p3": "Please include enough detail for us to verify and fulfill your request. Response times depend on complexity and applicable law.",
+    "p4": "Replace the default mailbox in .env with your organization’s official DPO inbox before production."
+  },
+  "Support": {
+    "metaTitle": "Support — DramaBox (demo)",
+    "title": "Customer support",
+    "p1": "This page replaces the placeholder “support” toast. Use it for FAQs, contact options, and links to related areas.",
+    "p2prefix": "For feedback about the demo, email",
+    "p2suffix": ".",
+    "p3": "You may also explore:",
+    "linkResources": "Resources & articles",
+    "linkBusiness": "Business partnerships"
+  },
+  "Account": {
+    "metaTitle": "Account — DramaBox (demo)",
+    "title": "Account",
+    "p1": "End-user sign-in (Google / Apple / Facebook, etc.) is not wired in this demo.",
+    "p2": "Movie editors can use the admin area with email and password after seeding the database.",
+    "linkAdmin": "Go to admin sign-in",
+    "p3": "When you add a real consumer account system, replace this page with profile, subscriptions, and device management."
+  },
+  "Careers": {
+    "metaTitle": "Careers — DramaBox (demo)",
+    "title": "Careers",
+    "p1": "We are a demo project; this page is a template for job inquiries.",
+    "p2prefix": "Send applications or questions to",
+    "p2suffix": ".",
+    "p3": "Update NEXT_PUBLIC_JOBS_EMAIL in .env to your HR inbox."
+  },
+  "Community": {
+    "metaTitle": "Community — DramaBox (demo)",
+    "title": "Community",
+    "intro": "Follow the project on social networks. URLs come from environment variables so you can swap them without code changes.",
+    "facebook": "Facebook",
+    "youtube": "Youtube",
+    "tiktok": "Tiktok",
+    "notConfigured": "(not configured)",
+    "envHint": "Set NEXT_PUBLIC_SOCIAL_FACEBOOK_URL, NEXT_PUBLIC_SOCIAL_YOUTUBE_URL, and NEXT_PUBLIC_SOCIAL_TIKTOK_URL in .env."
+  },
+  "Toast": {
+    "dismiss": "Dismiss notification"
+  },
+  "Admin": {
+    "title": "Movie admin",
+    "backSite": "Back to site",
+    "logout": "Log out",
+    "loginTitle": "Admin sign-in",
+    "loginHeading": "Admin login",
+    "loginHint": "Default account: admin@example.com / changeme (change in .env and re-seed).",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "errorMissing": "Enter email and password.",
+    "errorInvalid": "Invalid email or password.",
+    "errorRateLimit": "Too many attempts. Please wait a few minutes and try again.",
+    "moviesTitle": "Movies (admin)",
+    "moviesHeading": "Movies in database",
+    "newMovie": "Add movie",
+    "colTitle": "Title",
+    "colBookId": "Book ID",
+    "colStatus": "Status",
+    "colUpdated": "Updated",
+    "edit": "Edit",
+    "emptyMovies": "No movies yet. Click “Add movie”.",
+    "newMovieTitle": "Add movie",
+    "newMovieHeading": "Create a new title",
+    "editMovieTitle": "Edit movie",
+    "editMovieHeading": "Edit movie",
+    "fieldTitle": "Title",
+    "fieldBookId": "Book ID (URL)",
+    "fieldSlug": "Slug (URL)",
+    "fieldSynopsis": "Synopsis",
+    "fieldEpisodes": "Episodes",
+    "fieldShelfOrder": "Shelf order",
+    "fieldTag": "Tag",
+    "fieldPoster": "Poster URL",
+    "fieldStatus": "Status",
+    "fieldShelves": "Show on shelves",
+    "fieldExclusive": "Exclusive",
+    "statusDraft": "Draft",
+    "statusPublished": "Published",
+    "statusArchived": "Archived",
+    "shelfCarousel": "Home carousel",
+    "shelfRecommended": "Must-sees",
+    "shelfTrending": "Trending",
+    "shelfHidden": "Hidden gems",
+    "save": "Save",
+    "create": "Create",
+    "cancel": "Cancel",
+    "archive": "Archive (hide from site)"
+  }
+}

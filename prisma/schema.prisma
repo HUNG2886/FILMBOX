@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+}
+
+model Movie {
+  id               String      @id @default(cuid())
+  bookId           String
+  slug             String
+  title            String
+  synopsis         String      @default("")
+  episodes         Int
+  tag              String?
+  posterSrc        String
+  exclusive        Boolean     @default(false)
+  status           String      @default("DRAFT")
+  showCarousel     Boolean     @default(false)
+  showRecommended  Boolean     @default(false)
+  showTrending     Boolean     @default(false)
+  showHidden       Boolean     @default(false)
+  shelfOrder       Int         @default(0)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  @@unique([bookId, slug])
+  @@index([status])
+}

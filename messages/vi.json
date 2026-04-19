@@ -1,0 +1,276 @@
+{
+  "Metadata": {
+    "title": "DramaBox — Phim ngắn tập",
+    "description": "Khám phá các bộ phim ngắn tập yêu thích.",
+    "titleTemplate": "%s — DramaBox (demo)"
+  },
+  "Nav": {
+    "forYou": "Dành cho bạn",
+    "browse": "Khám phá",
+    "resources": "Tài nguyên",
+    "categories": "Danh mục",
+    "home": "Trang chủ",
+    "browseGenres": "Khám phá thể loại",
+    "articlesResources": "Bài viết & tài nguyên"
+  },
+  "Header": {
+    "brand": "DramaBox",
+    "support": "Hỗ trợ",
+    "supportToastTitle": "Hỗ trợ khách hàng",
+    "supportToastDesc": "Kênh hỗ trợ sẽ sớm mở.",
+    "account": "Tài khoản",
+    "accountToastTitle": "Tài khoản",
+    "accountToastDesc": "Đăng nhập (Google / Apple / Facebook) sẽ mở trong modal — bản demo chưa kết nối.",
+    "closeMenu": "Đóng menu",
+    "openMenu": "Mở menu",
+    "languagePicker": "Ngôn ngữ"
+  },
+  "Search": {
+    "label": "Tìm kiếm",
+    "placeholder": "Tìm kiếm"
+  },
+  "Footer": {
+    "aboutTitle": "Về chúng tôi",
+    "contactTitle": "Liên hệ với chúng tôi",
+    "community": "Cộng đồng",
+    "communityHub": "Trang cộng đồng",
+    "emailLabel": "Email:",
+    "terms": "Thỏa thuận người dùng",
+    "privacy": "Chính sách quyền riêng tư",
+    "cookie": "Chính sách cookie",
+    "dpo": "DPO",
+    "business": "Hợp tác thương mại",
+    "careers": "Tuyển dụng",
+    "socialFacebook": "Facebook",
+    "socialYoutube": "Youtube",
+    "socialTiktok": "Tiktok",
+    "socialUnsetHint": "Thêm NEXT_PUBLIC_SOCIAL_* trong .env để bật liên kết",
+    "disclaimer": "© Bản demo học tập — không liên kết chính thức với DramaBox. Trang pháp lý và hỗ trợ được phục vụ trên site này; cấu hình email và mạng xã hội trong .env."
+  },
+  "Banner": {
+    "close": "Đóng",
+    "body": "Nhiều nội dung hấp dẫn hơn đều có tại ứng dụng — bản demo này chỉ tái hiện giao diện web.",
+    "openApp": "Mở",
+    "openToastTitle": "Mở ứng dụng",
+    "openToastDesc": "Demo chưa kết nối store chính thức."
+  },
+  "Theme": {
+    "darkOn": "Đã bật giao diện tối",
+    "lightOn": "Đã bật giao diện sáng",
+    "toLight": "Chuyển sang giao diện sáng",
+    "toDark": "Chuyển sang giao diện tối"
+  },
+  "Hero": {
+    "carouselLabel": "Phim nổi bật",
+    "episodes": "{count} tập",
+    "viewDetails": "Xem chi tiết",
+    "slide": "Slide {n}",
+    "emptyCarousel": "Chưa có phim trên carousel. Đăng nhập admin để thêm và bật “Carousel”."
+  },
+  "Sections": {
+    "recommended": "Phim hay nên xem",
+    "trending": "Đang hot hiện nay",
+    "featured": "Tập phim đặc sắc",
+    "seeMore": "Xem thêm",
+    "seeMoreTitle": "Xem thêm {title}"
+  },
+  "Badge": {
+    "exclusive": "Độc quyền"
+  },
+  "Poster": {
+    "aria": "{title}, {count} tập"
+  },
+  "Genres": {
+    "title": "Tất cả thể loại",
+    "description": "Trang này tương ứng tab Khám phá trên dramaboxdb: danh sách thể loại dẫn tới bộ lọc phim.",
+    "metaTitle": "Tất cả thể loại — DramaBox (demo)",
+    "metaDescription": "Khám phá phim ngắn theo thể loại (bản demo).",
+    "detailMetaFallback": "Thể loại",
+    "breadcrumb": "Thể loại",
+    "detailIntroBefore": "Demo: hiển thị toàn bộ phim trong catalog. Trên site thật, API sẽ lọc theo thể loại",
+    "detailIntroAfter": "."
+  },
+  "SearchPage": {
+    "metaTitle": "Tìm kiếm — DramaBox (demo)",
+    "title": "Tìm kiếm",
+    "introBefore": "Trang",
+    "introAfter": "giống hành vi dramaboxdb.",
+    "results": "Kết quả ({count})",
+    "suggestions": "Gợi ý cho bạn",
+    "empty": "Không tìm thấy phim phù hợp. Thử từ khóa khác.",
+    "moreGenres": "Xem thêm:",
+    "moreGenresLink": "Khám phá thể loại"
+  },
+  "Content": {
+    "metaTitle": "Tài nguyên & bài viết — DramaBox (demo)",
+    "metaDescription": "Bài viết và tài nguyên (demo), tương tự /content trên dramaboxdb.",
+    "title": "Tài nguyên",
+    "introBefore": "Trang tổng hợp bài viết (SEO / review). Mỗi mục dẫn tới trang chi tiết",
+    "introAfter": ".",
+    "articleMetaFallback": "Bài viết",
+    "breadcrumb": "Tài nguyên",
+    "bodyPlaceholder": "Đây là nội dung minh họa. Bạn có thể thay bằng MDX hoặc CMS. Đường dẫn khớp mô hình /content trên dramaboxdb."
+  },
+  "Channels": {
+    "metaFallback": "Kênh",
+    "breadcrumbHome": "Trang chủ",
+    "mustSees": {
+      "title": "Phim hay nên xem",
+      "description": "Kênh tổng hợp gợi ý (tương tự /channel/must-sees)."
+    },
+    "trending": {
+      "title": "Đang hot hiện nay",
+      "description": "Kênh xu hướng (tương tự /channel/trending)."
+    },
+    "hiddenGems": {
+      "title": "Tập phim đặc sắc",
+      "description": "Kênh ẩn mình hay (tương tự /channel/hidden-gems)."
+    }
+  },
+  "Movie": {
+    "metaFallback": "Phim",
+    "noSynopsis": "Chưa có mô tả chi tiết cho bản demo.",
+    "relatedSearch": "Tìm phim liên quan",
+    "viewGenres": "Xem thể loại",
+    "urlSample": "URL mẫu: /movie/{bookId}/{slug}",
+    "breadcrumbHome": "Trang chủ",
+    "episodes": "{count} tập"
+  },
+  "Business": {
+    "metaTitle": "Hợp tác kinh doanh — DramaBox (demo)",
+    "title": "Hợp tác kinh doanh",
+    "introBefore": "Trang minh họa theo cấu trúc",
+    "introAfter": "trên dramaboxdb. Trong dự án thật, nội dung thường hướng dẫn gửi email theo từng loại hợp tác.",
+    "item1": "Phân phối phim ngắn: gửi tới <email>partner@example.com</email> (placeholder).",
+    "item2": "Biên kịch / phụ đề: gửi tới <email>script@example.com</email> (placeholder).",
+    "item3": "Sản xuất tiếng Anh: gửi tới <email>production@example.com</email> (placeholder).",
+    "backHome": "← Về trang chủ"
+  },
+  "LegalTerms": {
+    "metaTitle": "Thỏa thuận người dùng — DramaBox (demo)",
+    "title": "Thỏa thuận người dùng",
+    "p1": "Các điều khoản này điều chỉnh việc bạn sử dụng trang demo. Khi truy cập hoặc dùng dịch vụ, bạn đồng ý với chúng.",
+    "p2": "Site phục vụ mục đích học tập và demo. Nội dung, tính khả dụng và tính năng có thể thay đổi mà không báo trước.",
+    "p3": "Bạn không được lạm dụng dịch vụ (gồm truy cập trái phép, thu thập dữ liệu gây hại hiệu năng, hoặc vi phạm pháp luật).",
+    "p4": "Sở hữu trí tuệ: nhãn hiệu và giao diện minh họa. Tên bên thứ ba có thể xuất hiện chỉ để so sánh.",
+    "p5": "Miễn trừ: dịch vụ được cung cấp “nguyên trạng” trong phạm vi pháp luật cho phép.",
+    "p6": "Chúng tôi có thể cập nhật điều khoản; tiếp tục sử dụng sau khi thay đổi nghĩa là bạn chấp nhận bản mới."
+  },
+  "LegalPrivacy": {
+    "metaTitle": "Chính sách quyền riêng tư — DramaBox (demo)",
+    "title": "Chính sách quyền riêng tư",
+    "p1": "Chính sách này mô tả dữ liệu mà bản demo có thể xử lý và lý do.",
+    "p2": "Khi duyệt trang, nhật ký web thông thường (IP, user agent, thời gian) có thể được lưu bởi hạ tầng lưu trữ để bảo mật và gỡ lỗi.",
+    "p3": "Nếu bạn liên hệ qua email, chúng tôi xử lý nội dung và địa chỉ để trả lời.",
+    "p4": "Đăng nhập admin dùng cookie phiên (HTTP-only) để duy trì phiên; script trang không đọc được.",
+    "p5": "Chúng tôi không bán dữ liệu cá nhân. Phân tích hoặc tracker bên thứ ba không bắt buộc trừ khi bạn bổ sung sau.",
+    "p6": "Tùy khu vực, bạn có thể có quyền truy cập, chỉnh sửa hoặc xóa dữ liệu. Dùng trang DPO để gửi yêu cầu.",
+    "p7": "Nếu mở rộng tài khoản người dùng hoặc thanh toán, nên rà soát chính sách với cố vấn pháp lý trước khi production."
+  },
+  "LegalCookies": {
+    "metaTitle": "Chính sách cookie — DramaBox (demo)",
+    "title": "Chính sách cookie",
+    "p1": "Site chỉ dùng cookie và công nghệ tương tự khi cần cho hoạt động cơ bản.",
+    "p2": "Cookie phiên: nếu dùng khu admin, cookie HTTP-only lưu token đăng nhập.",
+    "p3": "Cookie giao diện: chế độ sáng/tối có thể lưu cục bộ trên trình duyệt.",
+    "p4": "Bạn có thể kiểm soát cookie trong trình duyệt. Chặn cookie thiết yếu có thể làm hỏng đăng nhập.",
+    "p5": "Nếu thêm cookie marketing hoặc phân tích sau này, hãy liệt kê và xin đồng ý theo quy định."
+  },
+  "LegalDpo": {
+    "metaTitle": "Cán bộ bảo vệ dữ liệu (DPO) — DramaBox (demo)",
+    "title": "Cán bộ bảo vệ dữ liệu (DPO)",
+    "p1": "Với câu hỏi hoặc yêu cầu liên quan quyền riêng tư (gồm truy cập hoặc xóa khi áp dụng), hãy liên hệ địa chỉ dưới đây.",
+    "p2prefix": "",
+    "p2suffix": " là đầu mối liên hệ được cấu hình cho bản demo này.",
+    "p3": "Vui lòng cung cấp đủ chi tiết để xác minh và xử lý. Thời gian phản hồi phụ thuộc độ phức tạp và luật hiện hành.",
+    "p4": "Trước khi production, thay hộp thư mặc định trong .env bằng hộp thư DPO chính thức của tổ chức."
+  },
+  "Support": {
+    "metaTitle": "Hỗ trợ — DramaBox (demo)",
+    "title": "Hỗ trợ khách hàng",
+    "p1": "Trang này thay cho toast “sắp mở”. Dùng cho FAQ, liên hệ và liên kết tới các mục liên quan.",
+    "p2prefix": "Góp ý về bản demo, gửi email tới",
+    "p2suffix": ".",
+    "p3": "Bạn cũng có thể xem:",
+    "linkResources": "Tài nguyên & bài viết",
+    "linkBusiness": "Hợp tác thương mại"
+  },
+  "Account": {
+    "metaTitle": "Tài khoản — DramaBox (demo)",
+    "title": "Tài khoản",
+    "p1": "Đăng nhập người dùng cuối (Google / Apple / Facebook, v.v.) chưa được nối trong demo.",
+    "p2": "Biên tập nội dung phim có thể dùng khu admin bằng email và mật khẩu sau khi seed cơ sở dữ liệu.",
+    "linkAdmin": "Đến trang đăng nhập admin",
+    "p3": "Khi bạn thêm hệ thống tài khoản thật, hãy thay trang này bằng hồ sơ, gói cài đặt và quản lý thiết bị."
+  },
+  "Careers": {
+    "metaTitle": "Tuyển dụng — DramaBox (demo)",
+    "title": "Tuyển dụng",
+    "p1": "Đây là dự án demo; trang này là mẫu cho hồ sơ tuyển dụng.",
+    "p2prefix": "Gửi hồ sơ hoặc câu hỏi tới",
+    "p2suffix": ".",
+    "p3": "Cập nhật NEXT_PUBLIC_JOBS_EMAIL trong .env thành hộp thư HR của bạn."
+  },
+  "Community": {
+    "metaTitle": "Cộng đồng — DramaBox (demo)",
+    "title": "Cộng đồng",
+    "intro": "Theo dõi dự án trên mạng xã hội. URL lấy từ biến môi trường để đổi mà không sửa code.",
+    "facebook": "Facebook",
+    "youtube": "Youtube",
+    "tiktok": "Tiktok",
+    "notConfigured": "(chưa cấu hình)",
+    "envHint": "Đặt NEXT_PUBLIC_SOCIAL_FACEBOOK_URL, NEXT_PUBLIC_SOCIAL_YOUTUBE_URL và NEXT_PUBLIC_SOCIAL_TIKTOK_URL trong .env."
+  },
+  "Toast": {
+    "dismiss": "Đóng thông báo"
+  },
+  "Admin": {
+    "title": "Quản trị phim",
+    "backSite": "Về site",
+    "logout": "Đăng xuất",
+    "loginTitle": "Đăng nhập quản trị",
+    "loginHeading": "Đăng nhập admin",
+    "loginHint": "Tài khoản mặc định: admin@example.com / changeme (đổi trong .env + seed lại).",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "signIn": "Đăng nhập",
+    "errorMissing": "Nhập đủ email và mật khẩu.",
+    "errorInvalid": "Sai email hoặc mật khẩu.",
+    "errorRateLimit": "Đăng nhập thử quá nhiều. Vui lòng đợi vài phút rồi thử lại.",
+    "moviesTitle": "Danh sách phim (admin)",
+    "moviesHeading": "Phim trong cơ sở dữ liệu",
+    "newMovie": "Thêm phim",
+    "colTitle": "Tiêu đề",
+    "colBookId": "Book ID",
+    "colStatus": "Trạng thái",
+    "colUpdated": "Cập nhật",
+    "edit": "Sửa",
+    "emptyMovies": "Chưa có phim. Nhấn “Thêm phim”.",
+    "newMovieTitle": "Thêm phim mới",
+    "newMovieHeading": "Tạo bộ phim mới",
+    "editMovieTitle": "Sửa phim",
+    "editMovieHeading": "Sửa phim",
+    "fieldTitle": "Tiêu đề",
+    "fieldBookId": "Book ID (URL)",
+    "fieldSlug": "Slug (URL)",
+    "fieldSynopsis": "Mô tả",
+    "fieldEpisodes": "Số tập",
+    "fieldShelfOrder": "Thứ tự kệ",
+    "fieldTag": "Thẻ / tag",
+    "fieldPoster": "URL poster",
+    "fieldStatus": "Trạng thái",
+    "fieldShelves": "Hiển thị trên kệ",
+    "fieldExclusive": "Độc quyền",
+    "statusDraft": "Nháp",
+    "statusPublished": "Xuất bản",
+    "statusArchived": "Lưu trữ",
+    "shelfCarousel": "Carousel trang chủ",
+    "shelfRecommended": "Phim hay nên xem",
+    "shelfTrending": "Đang hot",
+    "shelfHidden": "Tập đặc sắc (Hidden gems)",
+    "save": "Lưu",
+    "create": "Tạo phim",
+    "cancel": "Hủy",
+    "archive": "Lưu trữ (ẩn khỏi site)"
+  }
+}
