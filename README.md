@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Database
+
+Use **PostgreSQL** (local Docker, or [Neon](https://neon.tech) for dev/prod). Set `DATABASE_URL` in `.env` to a connection string starting with `postgresql://` or `postgres://`. Then:
+
+```bash
+npx prisma migrate deploy
+npx prisma db seed   # optional: admin user + demo movies
+```
+
 ## Getting Started
 
 First, run the development server:
@@ -37,6 +46,6 @@ Import the GitHub repo in [Vercel](https://vercel.com/new). Set **Environment Va
 - `AUTH_SECRET` — long random string (production).
 - `ADMIN_EMAIL` / `ADMIN_PASSWORD` — for `prisma db seed` if you seed the production DB once.
 
-Marketing and admin routes use `dynamic = "force-dynamic"` so `next build` does not require a database at build time; the app still needs `DATABASE_URL` when handling requests.
+`npm run build` runs `prisma migrate deploy` first — set **`DATABASE_URL` on Vercel for Production (and Preview if you deploy previews)** so builds can apply migrations. Marketing/admin use `dynamic = "force-dynamic"` for request-time rendering.
 
 See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
