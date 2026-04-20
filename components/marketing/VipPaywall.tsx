@@ -21,7 +21,7 @@ export async function VipPaywall({ user, locale, backHref, backLabel, nextPath }
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <div className="rounded-3xl border border-card-border bg-card p-8 text-center shadow-sm">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-500/15 text-yellow-500">
+        <div className="badge-vip-soft mx-auto flex h-16 w-16 items-center justify-center rounded-full">
           {user ? <Crown className="h-8 w-8" /> : <Lock className="h-8 w-8" />}
         </div>
         <h1 className="mt-4 text-2xl font-bold text-foreground">

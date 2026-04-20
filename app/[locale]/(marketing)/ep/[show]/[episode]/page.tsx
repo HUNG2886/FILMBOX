@@ -119,7 +119,7 @@ export default async function EpisodePage({ params, searchParams }: Props) {
         <div className="overflow-hidden rounded-xl border border-card-border bg-card">
           {gated ? (
             <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 bg-background p-6 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-500/15 text-yellow-500">
+              <div className="badge-vip-soft flex h-14 w-14 items-center justify-center rounded-full">
                 {user ? <Crown className="h-7 w-7" /> : <Lock className="h-7 w-7" />}
               </div>
               <div>
@@ -133,7 +133,7 @@ export default async function EpisodePage({ params, searchParams }: Props) {
               {user ? (
                 <Link
                   href="/account/vip"
-                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600"
+                  className="badge-vip inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
                 >
                   <Crown className="h-4 w-4" />
                   {tp("upgradeCta")}
@@ -141,7 +141,7 @@ export default async function EpisodePage({ params, searchParams }: Props) {
               ) : (
                 <Link
                   href={loginHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600"
+                  className="badge-vip inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
                 >
                   <Lock className="h-4 w-4" />
                   {tp("signInCta")}

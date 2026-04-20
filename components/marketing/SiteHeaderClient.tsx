@@ -107,7 +107,7 @@ export function SiteHeaderClient({ user }: Props) {
                 <span
                   aria-label={th("vipBadgeAria")}
                   title={th("vipBadgeAria")}
-                  className="absolute -right-0.5 -top-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-yellow-500 text-[8px] font-bold text-white shadow sm:h-5 sm:w-5 sm:text-[10px]"
+                  className="badge-vip absolute -right-0.5 -top-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold sm:h-5 sm:w-5 sm:text-[10px]"
                 >
                   <Crown className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 </span>

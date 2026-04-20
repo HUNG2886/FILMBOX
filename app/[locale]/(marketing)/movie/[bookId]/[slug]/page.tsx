@@ -49,7 +49,7 @@ export default async function MoviePage({ params }: Props) {
         <div className="relative mx-auto aspect-[2/3] w-full max-w-[240px] shrink-0 overflow-hidden rounded-2xl border border-card-border sm:mx-0">
           <Image src={drama.posterSrc} alt={drama.title} fill className="object-cover" sizes="240px" priority />
           {drama.exclusive && (
-            <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-full bg-yellow-500/90 px-2 py-0.5 text-[10px] font-bold text-white shadow">
+            <span className="badge-vip absolute left-2 top-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold">
               <Crown className="h-3 w-3" />
               VIP
             </span>
@@ -78,7 +78,7 @@ export default async function MoviePage({ params }: Props) {
               user ? (
                 <Link
                   href="/account/vip"
-                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-yellow-600"
+                  className="badge-vip inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition"
                 >
                   <Crown className="h-4 w-4" />
                   {tp("upgradeCta")}
@@ -86,7 +86,7 @@ export default async function MoviePage({ params }: Props) {
               ) : (
                 <Link
                   href={loginHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-yellow-600"
+                  className="badge-vip inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition"
                 >
                   <Lock className="h-4 w-4" />
                   {tp("signInCta")}
