@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { PaymentBankSection } from "@/components/marketing/account/PaymentBankSection";
 import { getUserSession } from "@/lib/user-session";
+import { getBankConfig, type PlanId } from "@/lib/payment-bank";
 import { formatVipUntil, isVipActive } from "@/lib/vip";
 
 export async function generateMetadata({
@@ -15,7 +17,7 @@ export async function generateMetadata({
 }
 
 type Plan = {
-  id: "monthly" | "quarterly" | "yearly";
+  id: PlanId;
   days: number;
   priceLabelKey: "price30" | "price90" | "price365";
   highlight?: boolean;
@@ -36,6 +38,9 @@ export default async function VipUpgradePage({
   const t = await getTranslations({ locale, namespace: "UserVip" });
   const user = await getUserSession();
   const vipActive = isVipActive(user);
+  const bank = getBankConfig();
+
+  const showPayment = !!user && !vipActive;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -86,23 +91,52 @@ export default async function VipUpgradePage({
                 {t("benefitDevices")}
               </li>
             </ul>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              className="mt-6 w-full cursor-not-allowed rounded-full border border-card-border bg-background px-4 py-2 text-sm font-semibold text-muted"
-              title={t("mockDisabledTitle")}
-            >
-              {t("subscribeBtn")}
-            </button>
+            {showPayment ? (
+              <a
+                href="#payment"
+                data-plan={p.id}
+                className="btn-primary mt-6 block w-full rounded-full px-4 py-2 text-center text-sm font-semibold"
+              >
+                {t("subscribeBtn")}
+              </a>
+            ) : (
+              <Link
+                href={user ? "/account" : "/account/login?next=/vip"}
+                className="mt-6 block w-full rounded-full border border-card-border bg-background px-4 py-2 text-center text-sm font-semibold text-muted"
+              >
+                {t("subscribeBtn")}
+              </Link>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="mt-8 rounded-2xl border border-card-border bg-card p-5 text-sm text-muted">
-        <h3 className="mb-2 text-base font-semibold text-foreground">{t("demoNoticeTitle")}</h3>
-        <p>{t("demoNoticeBody")}</p>
-      </div>
+      {showPayment && bank && (
+        <PaymentBankSection
+          userId={user.id}
+          plans={PLANS.map((p) => ({
+            id: p.id,
+            days: p.days,
+            highlight: p.highlight,
+          }))}
+          bank={bank}
+          locale={locale}
+        />
+      )}
+
+      {showPayment && !bank && (
+        <div className="mt-8 rounded-2xl border border-card-border bg-card p-5 text-sm text-muted">
+          <h3 className="mb-2 text-base font-semibold text-foreground">
+            {t("payment.fallbackTitle")}
+          </h3>
+          <p>{t("payment.fallbackBody")}</p>
+          <p className="mt-3">
+            <Link href="/support" className="text-accent hover:underline">
+              {t("payment.contactSupport")}
+            </Link>
+          </p>
+        </div>
+      )}
 
       <p className="mt-8 text-center text-sm">
         <Link href="/account" className="text-accent hover:underline">

@@ -1,4 +1,4 @@
-/** Thể loại demo — đích `/genres/[id]` giống dramaboxdb */
+/** Danh sách thể loại phim; mỗi mục dẫn tới `/genres/[id]`. */
 export const genres = [
   { id: "161", name: "Romance", replaceName: "romance" },
   { id: "185", name: "Secret Identity", replaceName: "secret-identity" },

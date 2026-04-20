@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
   const drama = await getDramaByPath(bookId, slug);
   const t = await getTranslations({ locale, namespace: "Movie" });
   return {
-    title: drama ? `${drama.title} — DramaBox (demo)` : t("metaFallback"),
+    title: drama ? `${drama.title} — FilmBox` : t("metaFallback"),
     description: drama?.synopsis?.slice(0, 160),
   };
 }

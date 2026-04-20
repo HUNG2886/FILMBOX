@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug, locale } = await params;
   const a = articles.find((x) => x.slug === slug);
   const t = await getTranslations({ locale, namespace: "Content" });
-  return { title: a ? `${a.title} — DramaBox (demo)` : t("articleMetaFallback") };
+  return { title: a ? `${a.title} — FilmBox` : t("articleMetaFallback") };
 }
 
 export default async function ArticlePage({ params }: Props) {

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
   const g = genres.find((x) => x.id === id);
   const t = await getTranslations({ locale, namespace: "Genres" });
   return {
-    title: g ? `${g.name} — DramaBox (demo)` : t("detailMetaFallback"),
+    title: g ? `${g.name} — FilmBox` : t("detailMetaFallback"),
   };
 }
 

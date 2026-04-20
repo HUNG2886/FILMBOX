@@ -11,7 +11,7 @@ export type DramaEpisode = {
 
 export type Drama = {
   id: string;
-  /** ID dạng số trong URL, giống pattern dramaboxdb */
+  /** ID dạng số trong URL phim. */
   bookId: string;
   slug: string;
   title: string;

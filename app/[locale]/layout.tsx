@@ -32,7 +32,7 @@ export async function generateMetadata({
   return {
     title: {
       default: t("title"),
-      template: "%s | DramaBox",
+      template: "%s | FilmBox",
     },
     description: t("description"),
   };

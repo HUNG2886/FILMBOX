@@ -1,5 +1,5 @@
 /**
- * Dữ liệu demo gốc — dùng cho seed DB và tham chiếu thứ tự kệ.
+ * Dữ liệu tham chiếu cho seed và thứ tự kệ mặc định.
  */
 import { slugify } from "@/lib/slug";
 import type { Drama } from "@/lib/dramas-types";

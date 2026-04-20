@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "title": "DramaBox — Short dramas",
+    "title": "FilmBox — Short dramas",
     "description": "Discover short drama series you will love.",
-    "titleTemplate": "%s — DramaBox (demo)"
+    "titleTemplate": "%s — FilmBox"
   },
   "Nav": {
     "forYou": "For you",
@@ -14,13 +14,13 @@
     "articlesResources": "Articles & resources"
   },
   "Header": {
-    "brand": "DramaBox",
+    "brand": "FilmBox",
     "support": "Support",
     "supportToastTitle": "Customer support",
     "supportToastDesc": "Support channels will open soon.",
     "account": "Account",
     "accountToastTitle": "Account",
-    "accountToastDesc": "Sign-in (Google / Apple / Facebook) would open in a modal — this demo is not connected.",
+    "accountToastDesc": "Sign in with your FilmBox email and password.",
     "vipBadgeAria": "VIP member",
     "upgradeVip": "Upgrade VIP",
     "closeMenu": "Close menu",
@@ -47,14 +47,14 @@
     "socialYoutube": "Youtube",
     "socialTiktok": "Tiktok",
     "socialUnsetHint": "Set NEXT_PUBLIC_SOCIAL_* in .env to enable this link",
-    "disclaimer": "© Learning demo — not affiliated with DramaBox. Legal pages and support routes are hosted on this site; set contact and social URLs in .env."
+    "disclaimer": "© FilmBox. All rights reserved."
   },
   "Banner": {
     "close": "Close",
-    "body": "More great content lives in the app — this demo only recreates the web UI.",
+    "body": "Enjoy a smoother experience with the FilmBox app.",
     "openApp": "Open",
     "openToastTitle": "Open app",
-    "openToastDesc": "The demo is not linked to an official store listing."
+    "openToastDesc": "The mobile app is launching soon — please check back later."
   },
   "Theme": {
     "darkOn": "Dark theme on",
@@ -84,19 +84,19 @@
   },
   "Genres": {
     "title": "All genres",
-    "description": "This page mirrors the Browse tab on dramaboxdb: a genre list that leads into filtered titles.",
-    "metaTitle": "All genres — DramaBox (demo)",
-    "metaDescription": "Explore short dramas by genre (demo).",
+    "description": "Browse short dramas by genre — pick a category to see its titles.",
+    "metaTitle": "All genres — FilmBox",
+    "metaDescription": "Explore short dramas by genre on FilmBox.",
     "detailMetaFallback": "Genre",
     "breadcrumb": "Genres",
-    "detailIntroBefore": "Demo: shows the full catalog. In production, the API would filter by genre",
-    "detailIntroAfter": "."
+    "detailIntroBefore": "Titles in the",
+    "detailIntroAfter": "genre."
   },
   "SearchPage": {
-    "metaTitle": "Search — DramaBox (demo)",
+    "metaTitle": "Search — FilmBox",
     "title": "Search",
-    "introBefore": "The",
-    "introAfter": "route matches dramaboxdb-style behavior.",
+    "introBefore": "Search titles, cast members, or genres on",
+    "introAfter": ".",
     "results": "Results ({count})",
     "suggestions": "Suggestions for you",
     "empty": "No matching titles. Try another keyword.",
@@ -104,34 +104,34 @@
     "moreGenresLink": "Browse genres"
   },
   "Content": {
-    "metaTitle": "Resources & articles — DramaBox (demo)",
-    "metaDescription": "Articles and resources (demo), similar to /content on dramaboxdb.",
+    "metaTitle": "Resources & articles — FilmBox",
+    "metaDescription": "Articles, guides, and news from the FilmBox team.",
     "title": "Resources",
-    "introBefore": "Article hub (SEO / reviews). Each item links to",
+    "introBefore": "Articles, guides, and reviews. Each item links to",
     "introAfter": ".",
     "articleMetaFallback": "Article",
     "breadcrumb": "Resources",
-    "bodyPlaceholder": "Placeholder body copy. Swap in MDX or CMS content. Paths mirror the /content model on dramaboxdb."
+    "bodyPlaceholder": "Content is being updated. Please check back soon for the full article."
   },
   "Channels": {
     "metaFallback": "Channel",
     "breadcrumbHome": "Home",
     "mustSees": {
       "title": "Worth watching",
-      "description": "Curated picks (similar to /channel/must-sees)."
+      "description": "Curated picks hand-selected by our editors."
     },
     "trending": {
       "title": "Trending now",
-      "description": "Trending shelf (similar to /channel/trending)."
+      "description": "Titles with the highest views right now."
     },
     "hiddenGems": {
       "title": "Featured episodes",
-      "description": "Hidden gems (similar to /channel/hidden-gems)."
+      "description": "Standout episodes you might have missed."
     }
   },
   "Movie": {
     "metaFallback": "Title",
-    "noSynopsis": "No extended synopsis in this demo.",
+    "noSynopsis": "No extended synopsis available yet.",
     "noPlayback": "No playback source has been added yet.",
     "playbackNotSupported": "Your browser does not support this playback source.",
     "watchNow": "Watch now",
@@ -149,43 +149,43 @@
     "kindSeriesLabel": "Series · {count} episodes",
     "relatedSearch": "Find related titles",
     "viewGenres": "Browse genres",
-    "urlSample": "Sample URL: /movie/{bookId}/{slug}",
+    "urlSample": "URL: /movie/{bookId}/{slug}",
     "breadcrumbHome": "Home",
     "episodes": "{count} episodes"
   },
   "Business": {
-    "metaTitle": "Business — DramaBox (demo)",
+    "metaTitle": "Business — FilmBox",
     "title": "Business partnerships",
-    "introBefore": "Demo page modeled after",
-    "introAfter": "on dramaboxdb. In production, copy usually routes inquiries by partnership type.",
+    "introBefore": "Partnership opportunities with",
+    "introAfter": ". Please route inquiries to the right contact below.",
     "item1": "Short drama distribution: email <email>partner@example.com</email> (placeholder).",
     "item2": "Script / subtitles: email <email>script@example.com</email> (placeholder).",
     "item3": "English production: email <email>production@example.com</email> (placeholder).",
     "backHome": "← Back to home"
   },
   "LegalTerms": {
-    "metaTitle": "Terms of use — DramaBox (demo)",
+    "metaTitle": "Terms of use — FilmBox",
     "title": "Terms of use",
-    "p1": "These terms govern your use of this demo website. By browsing or using the service, you agree to them.",
-    "p2": "The site is provided for learning and demonstration. Content, availability, and features may change without notice.",
+    "p1": "These terms govern your use of FilmBox. By browsing or using the service, you agree to them.",
+    "p2": "Content, availability, and features may change without notice to keep the best experience for our users.",
     "p3": "You agree not to misuse the service (including attempting unauthorized access, scraping in ways that harm performance, or violating applicable law).",
     "p4": "Intellectual property: branding and UI patterns shown here are illustrative. Third-party names may appear for comparison only.",
     "p5": "Disclaimer: the service is provided “as is” without warranties to the extent permitted by law.",
     "p6": "We may update these terms; continued use after changes means you accept the revised version."
   },
   "LegalPrivacy": {
-    "metaTitle": "Privacy policy — DramaBox (demo)",
+    "metaTitle": "Privacy policy — FilmBox",
     "title": "Privacy policy",
-    "p1": "This policy explains what data this demo may process and why.",
+    "p1": "This policy explains what data FilmBox may process and why.",
     "p2": "When you browse pages, typical web logs (such as IP address, user agent, and timestamps) may be stored by hosting infrastructure for security and debugging.",
     "p3": "If you contact us by email, we process your message content and address to respond.",
     "p4": "Admin sign-in uses a session cookie (HTTP-only) to keep you signed in; it is not readable by page scripts.",
-    "p5": "We do not sell your personal data. Analytics or third-party trackers are not required for this demo unless you add them later.",
+    "p5": "We do not sell your personal data.",
     "p6": "Depending on your region, you may have rights to access, correct, or delete personal data. Contact the DPO route for requests.",
-    "p7": "If this demo is extended with accounts or payments, this policy should be reviewed with legal counsel before production use."
+    "p7": "This policy may be updated. The latest version is always available on this page."
   },
   "LegalCookies": {
-    "metaTitle": "Cookie policy — DramaBox (demo)",
+    "metaTitle": "Cookie policy — FilmBox",
     "title": "Cookie policy",
     "p1": "This site may use cookies and similar technologies only as needed for basic operation.",
     "p2": "Session cookies: if you use admin features, an HTTP-only cookie stores your signed session token.",
@@ -194,48 +194,48 @@
     "p5": "If you add marketing or analytics cookies later, list them here and obtain consent where required."
   },
   "LegalDpo": {
-    "metaTitle": "Data protection officer — DramaBox (demo)",
+    "metaTitle": "Data protection officer — FilmBox",
     "title": "Data protection officer (DPO)",
     "p1": "For privacy-related questions or requests (including access or deletion where applicable), contact the address below.",
     "p2prefix": "",
-    "p2suffix": " is the designated contact for this demo configuration.",
+    "p2suffix": " is the designated data protection contact for FilmBox.",
     "p3": "Please include enough detail for us to verify and fulfill your request. Response times depend on complexity and applicable law.",
-    "p4": "Replace the default mailbox in .env with your organization’s official DPO inbox before production."
+    "p4": "If you have not received a response within 15 business days, please follow up via the support page."
   },
   "Support": {
-    "metaTitle": "Support — DramaBox (demo)",
+    "metaTitle": "Support — FilmBox",
     "title": "Customer support",
-    "p1": "This page replaces the placeholder “support” toast. Use it for FAQs, contact options, and links to related areas.",
-    "p2prefix": "For feedback about the demo, email",
+    "p1": "If you need help with your account, VIP subscription, or playback, reach out via the channels below.",
+    "p2prefix": "For feedback and support requests, email",
     "p2suffix": ".",
     "p3": "You may also explore:",
     "linkResources": "Resources & articles",
     "linkBusiness": "Business partnerships"
   },
   "Account": {
-    "metaTitle": "Account — DramaBox",
+    "metaTitle": "Account — FilmBox",
     "title": "My account",
     "guestIntro": "Sign in to save favorites, upgrade to VIP, and keep watching across devices.",
     "goRegister": "No account yet? Create one",
     "sessionTitle": "Session"
   },
   "Careers": {
-    "metaTitle": "Careers — DramaBox (demo)",
+    "metaTitle": "Careers — FilmBox",
     "title": "Careers",
-    "p1": "We are a demo project; this page is a template for job inquiries.",
+    "p1": "FilmBox is always looking for collaborators who love film and technology. Get in touch to start the conversation.",
     "p2prefix": "Send applications or questions to",
     "p2suffix": ".",
-    "p3": "Update NEXT_PUBLIC_JOBS_EMAIL in .env to your HR inbox."
+    "p3": "Please mention the role you are interested in and include a portfolio link if available."
   },
   "Community": {
-    "metaTitle": "Community — DramaBox (demo)",
+    "metaTitle": "Community — FilmBox",
     "title": "Community",
-    "intro": "Follow the project on social networks. URLs come from environment variables so you can swap them without code changes.",
+    "intro": "Follow FilmBox on social networks for new titles and promotions.",
     "facebook": "Facebook",
     "youtube": "Youtube",
     "tiktok": "Tiktok",
-    "notConfigured": "(not configured)",
-    "envHint": "Set NEXT_PUBLIC_SOCIAL_FACEBOOK_URL, NEXT_PUBLIC_SOCIAL_YOUTUBE_URL, and NEXT_PUBLIC_SOCIAL_TIKTOK_URL in .env."
+    "notConfigured": "(coming soon)",
+    "envHint": ""
   },
   "Toast": {
     "dismiss": "Dismiss notification"
@@ -319,12 +319,12 @@
     "deleteConfirm": "Permanently delete \"{title}\"? This cannot be undone."
   },
   "UserAuth": {
-    "loginMetaTitle": "Sign in — DramaBox",
-    "registerMetaTitle": "Create account — DramaBox",
+    "loginMetaTitle": "Sign in — FilmBox",
+    "registerMetaTitle": "Create account — FilmBox",
     "loginHeading": "Sign in",
     "loginHint": "Use the email and password you registered with.",
     "registerHeading": "Create a new account",
-    "registerHint": "Takes a few seconds. No email verification in this demo.",
+    "registerHint": "Takes just a few seconds to create your FilmBox account.",
     "email": "Email",
     "password": "Password",
     "passwordHint": "At least 10 characters, mixing letters and digits.",
@@ -352,7 +352,7 @@
     "passwordUpdated": "Password updated successfully."
   },
   "UserVip": {
-    "metaTitle": "Upgrade VIP — DramaBox",
+    "metaTitle": "Upgrade VIP — FilmBox",
     "pageTitle": "Upgrade to VIP",
     "pageSubtitle": "Unlock every exclusive title and watch with zero ads.",
     "freeBadge": "Free account",
@@ -369,16 +369,34 @@
     "days_30": "30 days of access",
     "days_90": "90 days · save 10%",
     "days_365": "365 days · save 30%",
-    "price30": "$4.99",
-    "price90": "$11.99",
-    "price365": "$39.99",
+    "price30": "99,000 ₫",
+    "price90": "269,000 ₫",
+    "price365": "899,000 ₫",
     "benefitExclusive": "Watch every exclusive title",
     "benefitNoAds": "No ad interruptions",
     "benefitDevices": "Multiple devices at the same time",
-    "subscribeBtn": "Subscribe",
-    "mockDisabledTitle": "Payment gateway not wired in this demo",
-    "demoNoticeTitle": "This is a demo",
-    "demoNoticeBody": "Payment gateway is not integrated. Contact the admin and they will activate VIP manually once the transfer is received."
+    "subscribeBtn": "Choose this plan",
+    "payment": {
+      "sectionTitle": "Pay by bank transfer",
+      "planLabel": "Select a plan",
+      "bankLabel": "Bank",
+      "accountNoLabel": "Account number",
+      "accountNameLabel": "Account holder",
+      "amountLabel": "Amount",
+      "memoLabel": "Transfer memo",
+      "qrAlt": "VietQR transfer code",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyFailed": "Copy failed, please select the value manually.",
+      "instructionsTitle": "How to pay",
+      "step1": "Open your banking app and scan the QR code (or transfer manually using the details below).",
+      "step2": "Keep the auto-generated transfer memo unchanged — it lets our team reconcile your order.",
+      "step3": "VIP is activated within 24 hours of a successful transfer.",
+      "activationNote": "If VIP is not active after 24 hours, send a receipt screenshot via the support page with your account email.",
+      "contactSupport": "Contact support",
+      "fallbackTitle": "Upgrade to VIP",
+      "fallbackBody": "Payment is temporarily unavailable. Please contact an administrator for manual VIP activation."
+    }
   },
   "AdminUsers": {
     "metaTitle": "Users (admin)",

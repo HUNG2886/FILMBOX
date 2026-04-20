@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props) {
   }
   const key = slug === "must-sees" ? "mustSees" : slug === "hidden-gems" ? "hiddenGems" : "trending";
   const title = t(`${key}.title`);
-  return { title: `${title} — DramaBox (demo)` };
+  return { title: `${title} — FilmBox` };
 }
 
 export default async function ChannelPage({ params }: Props) {

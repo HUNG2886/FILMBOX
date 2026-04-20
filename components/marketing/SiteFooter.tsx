@@ -65,7 +65,7 @@ export function SiteFooter() {
             <span className="bg-brand-gradient flex h-10 w-10 items-center justify-center rounded-xl">
               <span className="ml-0.5 inline-block h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-white" />
             </span>
-            <span className="text-lg font-bold tracking-tight">DramaBox</span>
+            <span className="text-lg font-bold tracking-tight">FilmBox</span>
           </Link>
           <div>
             <p className="mb-2 text-sm font-medium text-foreground">{t("community")}</p>

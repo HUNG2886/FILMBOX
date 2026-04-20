@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "title": "DramaBox — Phim ngắn tập",
+    "title": "FilmBox — Phim ngắn",
     "description": "Khám phá các bộ phim ngắn tập yêu thích.",
-    "titleTemplate": "%s — DramaBox (demo)"
+    "titleTemplate": "%s — FilmBox"
   },
   "Nav": {
     "forYou": "Dành cho bạn",
@@ -14,13 +14,13 @@
     "articlesResources": "Bài viết & tài nguyên"
   },
   "Header": {
-    "brand": "DramaBox",
+    "brand": "FilmBox",
     "support": "Hỗ trợ",
     "supportToastTitle": "Hỗ trợ khách hàng",
     "supportToastDesc": "Kênh hỗ trợ sẽ sớm mở.",
     "account": "Tài khoản",
     "accountToastTitle": "Tài khoản",
-    "accountToastDesc": "Đăng nhập (Google / Apple / Facebook) sẽ mở trong modal — bản demo chưa kết nối.",
+    "accountToastDesc": "Đăng nhập bằng email và mật khẩu FilmBox của bạn.",
     "vipBadgeAria": "Thành viên VIP",
     "upgradeVip": "Nâng cấp VIP",
     "closeMenu": "Đóng menu",
@@ -47,14 +47,14 @@
     "socialYoutube": "Youtube",
     "socialTiktok": "Tiktok",
     "socialUnsetHint": "Thêm NEXT_PUBLIC_SOCIAL_* trong .env để bật liên kết",
-    "disclaimer": "© Bản demo học tập — không liên kết chính thức với DramaBox. Trang pháp lý và hỗ trợ được phục vụ trên site này; cấu hình email và mạng xã hội trong .env."
+    "disclaimer": "© FilmBox. Mọi quyền được bảo lưu."
   },
   "Banner": {
     "close": "Đóng",
-    "body": "Nhiều nội dung hấp dẫn hơn đều có tại ứng dụng — bản demo này chỉ tái hiện giao diện web.",
+    "body": "Trải nghiệm mượt mà hơn trên ứng dụng FilmBox.",
     "openApp": "Mở",
     "openToastTitle": "Mở ứng dụng",
-    "openToastDesc": "Demo chưa kết nối store chính thức."
+    "openToastDesc": "Ứng dụng di động sắp ra mắt — vui lòng quay lại sau."
   },
   "Theme": {
     "darkOn": "Đã bật giao diện tối",
@@ -84,19 +84,19 @@
   },
   "Genres": {
     "title": "Tất cả thể loại",
-    "description": "Trang này tương ứng tab Khám phá trên dramaboxdb: danh sách thể loại dẫn tới bộ lọc phim.",
-    "metaTitle": "Tất cả thể loại — DramaBox (demo)",
-    "metaDescription": "Khám phá phim ngắn theo thể loại (bản demo).",
+    "description": "Danh sách thể loại — nhấn vào để xem các phim thuộc thể loại đó.",
+    "metaTitle": "Tất cả thể loại — FilmBox",
+    "metaDescription": "Khám phá phim ngắn theo thể loại trên FilmBox.",
     "detailMetaFallback": "Thể loại",
     "breadcrumb": "Thể loại",
-    "detailIntroBefore": "Demo: hiển thị toàn bộ phim trong catalog. Trên site thật, API sẽ lọc theo thể loại",
+    "detailIntroBefore": "Danh sách phim thuộc thể loại",
     "detailIntroAfter": "."
   },
   "SearchPage": {
-    "metaTitle": "Tìm kiếm — DramaBox (demo)",
+    "metaTitle": "Tìm kiếm — FilmBox",
     "title": "Tìm kiếm",
-    "introBefore": "Trang",
-    "introAfter": "giống hành vi dramaboxdb.",
+    "introBefore": "Tìm phim theo tên, diễn viên hoặc thể loại trên",
+    "introAfter": ".",
     "results": "Kết quả ({count})",
     "suggestions": "Gợi ý cho bạn",
     "empty": "Không tìm thấy phim phù hợp. Thử từ khóa khác.",
@@ -104,34 +104,34 @@
     "moreGenresLink": "Khám phá thể loại"
   },
   "Content": {
-    "metaTitle": "Tài nguyên & bài viết — DramaBox (demo)",
-    "metaDescription": "Bài viết và tài nguyên (demo), tương tự /content trên dramaboxdb.",
+    "metaTitle": "Tài nguyên & bài viết — FilmBox",
+    "metaDescription": "Bài viết, hướng dẫn và cập nhật mới nhất từ FilmBox.",
     "title": "Tài nguyên",
-    "introBefore": "Trang tổng hợp bài viết (SEO / review). Mỗi mục dẫn tới trang chi tiết",
+    "introBefore": "Tổng hợp bài viết, hướng dẫn và đánh giá. Mỗi mục dẫn tới trang chi tiết",
     "introAfter": ".",
     "articleMetaFallback": "Bài viết",
     "breadcrumb": "Tài nguyên",
-    "bodyPlaceholder": "Đây là nội dung minh họa. Bạn có thể thay bằng MDX hoặc CMS. Đường dẫn khớp mô hình /content trên dramaboxdb."
+    "bodyPlaceholder": "Nội dung đang được cập nhật. Vui lòng quay lại sau để xem đầy đủ."
   },
   "Channels": {
     "metaFallback": "Kênh",
     "breadcrumbHome": "Trang chủ",
     "mustSees": {
       "title": "Phim hay nên xem",
-      "description": "Kênh tổng hợp gợi ý (tương tự /channel/must-sees)."
+      "description": "Kênh tổng hợp những bộ phim được biên tập viên gợi ý."
     },
     "trending": {
       "title": "Đang hot hiện nay",
-      "description": "Kênh xu hướng (tương tự /channel/trending)."
+      "description": "Kênh phim có lượt xem cao nhất trong thời gian gần đây."
     },
     "hiddenGems": {
       "title": "Tập phim đặc sắc",
-      "description": "Kênh ẩn mình hay (tương tự /channel/hidden-gems)."
+      "description": "Những tập phim nổi bật có thể bạn đã bỏ lỡ."
     }
   },
   "Movie": {
     "metaFallback": "Phim",
-    "noSynopsis": "Chưa có mô tả chi tiết cho bản demo.",
+    "noSynopsis": "Chưa có mô tả chi tiết cho phim này.",
     "noPlayback": "Phim này chưa được thêm nguồn phát.",
     "playbackNotSupported": "Trình duyệt của bạn không hỗ trợ nguồn phát này.",
     "watchNow": "Xem phim",
@@ -149,43 +149,43 @@
     "kindSeriesLabel": "Phim dài tập · {count} tập",
     "relatedSearch": "Tìm phim liên quan",
     "viewGenres": "Xem thể loại",
-    "urlSample": "URL mẫu: /movie/{bookId}/{slug}",
+    "urlSample": "Đường dẫn: /movie/{bookId}/{slug}",
     "breadcrumbHome": "Trang chủ",
     "episodes": "{count} tập"
   },
   "Business": {
-    "metaTitle": "Hợp tác kinh doanh — DramaBox (demo)",
+    "metaTitle": "Hợp tác kinh doanh — FilmBox",
     "title": "Hợp tác kinh doanh",
-    "introBefore": "Trang minh họa theo cấu trúc",
-    "introAfter": "trên dramaboxdb. Trong dự án thật, nội dung thường hướng dẫn gửi email theo từng loại hợp tác.",
+    "introBefore": "Các cơ hội hợp tác với",
+    "introAfter": ". Vui lòng gửi email theo đúng đầu mối bên dưới.",
     "item1": "Phân phối phim ngắn: gửi tới <email>partner@example.com</email> (placeholder).",
     "item2": "Biên kịch / phụ đề: gửi tới <email>script@example.com</email> (placeholder).",
     "item3": "Sản xuất tiếng Anh: gửi tới <email>production@example.com</email> (placeholder).",
     "backHome": "← Về trang chủ"
   },
   "LegalTerms": {
-    "metaTitle": "Thỏa thuận người dùng — DramaBox (demo)",
+    "metaTitle": "Thỏa thuận người dùng — FilmBox",
     "title": "Thỏa thuận người dùng",
-    "p1": "Các điều khoản này điều chỉnh việc bạn sử dụng trang demo. Khi truy cập hoặc dùng dịch vụ, bạn đồng ý với chúng.",
-    "p2": "Site phục vụ mục đích học tập và demo. Nội dung, tính khả dụng và tính năng có thể thay đổi mà không báo trước.",
+    "p1": "Các điều khoản này điều chỉnh việc bạn sử dụng FilmBox. Khi truy cập hoặc dùng dịch vụ, bạn đồng ý với chúng.",
+    "p2": "Nội dung, tính khả dụng và tính năng có thể thay đổi mà không báo trước để đảm bảo trải nghiệm tốt nhất cho người dùng.",
     "p3": "Bạn không được lạm dụng dịch vụ (gồm truy cập trái phép, thu thập dữ liệu gây hại hiệu năng, hoặc vi phạm pháp luật).",
     "p4": "Sở hữu trí tuệ: nhãn hiệu và giao diện minh họa. Tên bên thứ ba có thể xuất hiện chỉ để so sánh.",
     "p5": "Miễn trừ: dịch vụ được cung cấp “nguyên trạng” trong phạm vi pháp luật cho phép.",
     "p6": "Chúng tôi có thể cập nhật điều khoản; tiếp tục sử dụng sau khi thay đổi nghĩa là bạn chấp nhận bản mới."
   },
   "LegalPrivacy": {
-    "metaTitle": "Chính sách quyền riêng tư — DramaBox (demo)",
+    "metaTitle": "Chính sách quyền riêng tư — FilmBox",
     "title": "Chính sách quyền riêng tư",
-    "p1": "Chính sách này mô tả dữ liệu mà bản demo có thể xử lý và lý do.",
+    "p1": "Chính sách này mô tả dữ liệu mà FilmBox có thể xử lý và lý do.",
     "p2": "Khi duyệt trang, nhật ký web thông thường (IP, user agent, thời gian) có thể được lưu bởi hạ tầng lưu trữ để bảo mật và gỡ lỗi.",
     "p3": "Nếu bạn liên hệ qua email, chúng tôi xử lý nội dung và địa chỉ để trả lời.",
     "p4": "Đăng nhập admin dùng cookie phiên (HTTP-only) để duy trì phiên; script trang không đọc được.",
-    "p5": "Chúng tôi không bán dữ liệu cá nhân. Phân tích hoặc tracker bên thứ ba không bắt buộc trừ khi bạn bổ sung sau.",
+    "p5": "Chúng tôi không bán dữ liệu cá nhân của bạn.",
     "p6": "Tùy khu vực, bạn có thể có quyền truy cập, chỉnh sửa hoặc xóa dữ liệu. Dùng trang DPO để gửi yêu cầu.",
-    "p7": "Nếu mở rộng tài khoản người dùng hoặc thanh toán, nên rà soát chính sách với cố vấn pháp lý trước khi production."
+    "p7": "Chính sách có thể được cập nhật. Phiên bản mới nhất luôn được đăng tại trang này."
   },
   "LegalCookies": {
-    "metaTitle": "Chính sách cookie — DramaBox (demo)",
+    "metaTitle": "Chính sách cookie — FilmBox",
     "title": "Chính sách cookie",
     "p1": "Site chỉ dùng cookie và công nghệ tương tự khi cần cho hoạt động cơ bản.",
     "p2": "Cookie phiên: nếu dùng khu admin, cookie HTTP-only lưu token đăng nhập.",
@@ -194,48 +194,48 @@
     "p5": "Nếu thêm cookie marketing hoặc phân tích sau này, hãy liệt kê và xin đồng ý theo quy định."
   },
   "LegalDpo": {
-    "metaTitle": "Cán bộ bảo vệ dữ liệu (DPO) — DramaBox (demo)",
+    "metaTitle": "Cán bộ bảo vệ dữ liệu (DPO) — FilmBox",
     "title": "Cán bộ bảo vệ dữ liệu (DPO)",
     "p1": "Với câu hỏi hoặc yêu cầu liên quan quyền riêng tư (gồm truy cập hoặc xóa khi áp dụng), hãy liên hệ địa chỉ dưới đây.",
     "p2prefix": "",
-    "p2suffix": " là đầu mối liên hệ được cấu hình cho bản demo này.",
+    "p2suffix": " là đầu mối liên hệ bảo vệ dữ liệu của FilmBox.",
     "p3": "Vui lòng cung cấp đủ chi tiết để xác minh và xử lý. Thời gian phản hồi phụ thuộc độ phức tạp và luật hiện hành.",
-    "p4": "Trước khi production, thay hộp thư mặc định trong .env bằng hộp thư DPO chính thức của tổ chức."
+    "p4": "Nếu bạn chưa nhận được phản hồi trong 15 ngày làm việc, vui lòng liên hệ lại qua trang hỗ trợ."
   },
   "Support": {
-    "metaTitle": "Hỗ trợ — DramaBox (demo)",
+    "metaTitle": "Hỗ trợ — FilmBox",
     "title": "Hỗ trợ khách hàng",
-    "p1": "Trang này thay cho toast “sắp mở”. Dùng cho FAQ, liên hệ và liên kết tới các mục liên quan.",
-    "p2prefix": "Góp ý về bản demo, gửi email tới",
+    "p1": "Nếu bạn cần trợ giúp về tài khoản, VIP hoặc phát phim, vui lòng liên hệ theo kênh dưới đây.",
+    "p2prefix": "Góp ý và yêu cầu hỗ trợ, gửi email tới",
     "p2suffix": ".",
     "p3": "Bạn cũng có thể xem:",
     "linkResources": "Tài nguyên & bài viết",
     "linkBusiness": "Hợp tác thương mại"
   },
   "Account": {
-    "metaTitle": "Tài khoản — DramaBox",
+    "metaTitle": "Tài khoản — FilmBox",
     "title": "Tài khoản của tôi",
     "guestIntro": "Đăng nhập để lưu phim yêu thích, nâng cấp VIP và tiếp tục xem trên nhiều thiết bị.",
     "goRegister": "Chưa có tài khoản? Đăng ký ngay",
     "sessionTitle": "Phiên đăng nhập"
   },
   "Careers": {
-    "metaTitle": "Tuyển dụng — DramaBox (demo)",
+    "metaTitle": "Tuyển dụng — FilmBox",
     "title": "Tuyển dụng",
-    "p1": "Đây là dự án demo; trang này là mẫu cho hồ sơ tuyển dụng.",
+    "p1": "FilmBox luôn tìm kiếm các cộng sự đam mê điện ảnh và công nghệ. Gửi hồ sơ để bắt đầu trò chuyện cùng chúng tôi.",
     "p2prefix": "Gửi hồ sơ hoặc câu hỏi tới",
     "p2suffix": ".",
-    "p3": "Cập nhật NEXT_PUBLIC_JOBS_EMAIL trong .env thành hộp thư HR của bạn."
+    "p3": "Vui lòng ghi rõ vị trí quan tâm và link portfolio (nếu có)."
   },
   "Community": {
-    "metaTitle": "Cộng đồng — DramaBox (demo)",
+    "metaTitle": "Cộng đồng — FilmBox",
     "title": "Cộng đồng",
-    "intro": "Theo dõi dự án trên mạng xã hội. URL lấy từ biến môi trường để đổi mà không sửa code.",
+    "intro": "Theo dõi FilmBox trên các mạng xã hội để cập nhật phim mới và ưu đãi.",
     "facebook": "Facebook",
     "youtube": "Youtube",
     "tiktok": "Tiktok",
-    "notConfigured": "(chưa cấu hình)",
-    "envHint": "Đặt NEXT_PUBLIC_SOCIAL_FACEBOOK_URL, NEXT_PUBLIC_SOCIAL_YOUTUBE_URL và NEXT_PUBLIC_SOCIAL_TIKTOK_URL trong .env."
+    "notConfigured": "(đang cập nhật)",
+    "envHint": ""
   },
   "Toast": {
     "dismiss": "Đóng thông báo"
@@ -319,12 +319,12 @@
     "deleteConfirm": "Xóa vĩnh viễn phim \"{title}\"? Thao tác này không thể hoàn tác."
   },
   "UserAuth": {
-    "loginMetaTitle": "Đăng nhập — DramaBox",
-    "registerMetaTitle": "Đăng ký — DramaBox",
+    "loginMetaTitle": "Đăng nhập — FilmBox",
+    "registerMetaTitle": "Đăng ký — FilmBox",
     "loginHeading": "Đăng nhập",
     "loginHint": "Dùng email và mật khẩu bạn đã đăng ký.",
     "registerHeading": "Tạo tài khoản mới",
-    "registerHint": "Chỉ mất vài giây. Không cần xác minh email trong bản demo.",
+    "registerHint": "Chỉ mất vài giây để tạo tài khoản FilmBox.",
     "email": "Email",
     "password": "Mật khẩu",
     "passwordHint": "Tối thiểu 10 ký tự, gồm chữ và số.",
@@ -352,7 +352,7 @@
     "passwordUpdated": "Đã đổi mật khẩu thành công."
   },
   "UserVip": {
-    "metaTitle": "Nâng cấp VIP — DramaBox",
+    "metaTitle": "Nâng cấp VIP — FilmBox",
     "pageTitle": "Nâng cấp lên VIP",
     "pageSubtitle": "Mở khóa toàn bộ phim Độc quyền và tận hưởng trải nghiệm không quảng cáo.",
     "freeBadge": "Tài khoản miễn phí",
@@ -375,10 +375,28 @@
     "benefitExclusive": "Xem toàn bộ phim Độc quyền",
     "benefitNoAds": "Không quảng cáo xen ngang",
     "benefitDevices": "Xem trên nhiều thiết bị cùng lúc",
-    "subscribeBtn": "Đăng ký gói",
-    "mockDisabledTitle": "Bản demo chưa nối cổng thanh toán",
-    "demoNoticeTitle": "Đây là bản demo",
-    "demoNoticeBody": "Cổng thanh toán chưa được tích hợp. Liên hệ quản trị viên để được kích hoạt VIP thủ công sau khi chuyển khoản."
+    "subscribeBtn": "Chọn gói này",
+    "payment": {
+      "sectionTitle": "Thanh toán qua chuyển khoản",
+      "planLabel": "Chọn gói",
+      "bankLabel": "Ngân hàng",
+      "accountNoLabel": "Số tài khoản",
+      "accountNameLabel": "Chủ tài khoản",
+      "amountLabel": "Số tiền",
+      "memoLabel": "Nội dung chuyển khoản",
+      "qrAlt": "Mã VietQR chuyển khoản",
+      "copy": "Sao chép",
+      "copied": "Đã sao chép",
+      "copyFailed": "Không sao chép được, vui lòng bôi đen và copy thủ công.",
+      "instructionsTitle": "Hướng dẫn thanh toán",
+      "step1": "Mở app ngân hàng và quét mã QR bên cạnh (hoặc chuyển khoản thủ công với thông tin bên dưới).",
+      "step2": "Giữ nguyên nội dung chuyển khoản được tạo sẵn — đây là mã đơn để bộ phận vận hành đối soát.",
+      "step3": "Sau khi chuyển khoản thành công, VIP sẽ được kích hoạt trong vòng 24 giờ.",
+      "activationNote": "Nếu sau 24 giờ VIP chưa được kích hoạt, vui lòng gửi ảnh biên lai qua trang hỗ trợ kèm email tài khoản.",
+      "contactSupport": "Liên hệ hỗ trợ",
+      "fallbackTitle": "Đăng ký VIP",
+      "fallbackBody": "Kênh thanh toán đang được cập nhật. Vui lòng liên hệ quản trị viên để được hướng dẫn đăng ký VIP."
+    }
   },
   "AdminUsers": {
     "metaTitle": "Người dùng (admin)",
