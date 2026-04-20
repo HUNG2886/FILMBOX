@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { getLocale } from "next-intl/server";
 import { logAuthEvent } from "@/lib/auth-log";
 import { adminSessionCookieName, signAdminToken } from "@/lib/auth-jwt";
+import { normalizeImageUrl } from "@/lib/image-url";
 import { prisma } from "@/lib/prisma";
 import { MOVIE_STATUS } from "@/lib/movie-status";
 import { allowRateLimit } from "@/lib/rate-limit-memory";
@@ -129,6 +130,7 @@ export async function createMovieAction(formData: FormData) {
   }
 
   await prisma.movie.create({
+    // Accept raw Drive sharing URLs and convert to direct image links.
     data: {
       bookId,
       slug,
@@ -136,7 +138,9 @@ export async function createMovieAction(formData: FormData) {
       synopsis: String(formData.get("synopsis") ?? ""),
       episodes: parseIntSafe(formData.get("episodes"), 1),
       tag: String(formData.get("tag") ?? "").trim() || null,
-      posterSrc: String(formData.get("posterSrc") ?? "").trim() || "https://picsum.photos/seed/new/400/600",
+      posterSrc:
+        normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()) ||
+        "https://picsum.photos/seed/new/400/600",
       exclusive: bool(formData, "exclusive"),
       status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
       showCarousel: bool(formData, "showCarousel"),
@@ -185,7 +189,7 @@ export async function updateMovieAction(formData: FormData) {
       synopsis: String(formData.get("synopsis") ?? ""),
       episodes: parseIntSafe(formData.get("episodes"), 1),
       tag: String(formData.get("tag") ?? "").trim() || null,
-      posterSrc: String(formData.get("posterSrc") ?? "").trim(),
+      posterSrc: normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()),
       exclusive: bool(formData, "exclusive"),
       status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
       showCarousel: bool(formData, "showCarousel"),

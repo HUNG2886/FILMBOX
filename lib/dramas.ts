@@ -1,6 +1,7 @@
 import type { Movie } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import type { Drama } from "@/lib/dramas-types";
+import { normalizeImageUrl } from "@/lib/image-url";
 import { MOVIE_STATUS } from "@/lib/movie-status";
 
 export type { Drama } from "@/lib/dramas-types";
@@ -14,7 +15,7 @@ export function movieToDrama(m: Movie): Drama {
     episodes: m.episodes,
     synopsis: m.synopsis,
     tag: m.tag ?? undefined,
-    posterSrc: m.posterSrc,
+    posterSrc: normalizeImageUrl(m.posterSrc),
     exclusive: m.exclusive,
   };
 }
