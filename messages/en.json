@@ -132,6 +132,7 @@
     "noSynopsis": "No extended synopsis in this demo.",
     "noPlayback": "No playback source has been added yet.",
     "playbackNotSupported": "Your browser does not support this playback source.",
+    "watchNow": "Watch now",
     "relatedSearch": "Find related titles",
     "viewGenres": "Browse genres",
     "urlSample": "Sample URL: /movie/{bookId}/{slug}",

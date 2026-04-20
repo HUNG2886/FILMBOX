@@ -47,7 +47,7 @@ export default async function MoviePage({ params }: Props) {
           <p className="mt-6 text-sm leading-relaxed text-muted">
             {drama.synopsis || t("noSynopsis")}
           </p>
-          <div className="mt-6">
+          <div className="mt-6" id="movie-player">
             {drama.playbackUrl ? (
               <div className="overflow-hidden rounded-xl border border-card-border bg-card">
                 {drama.playbackType === "drive" || drama.playbackType === "external" ? (
@@ -70,6 +70,23 @@ export default async function MoviePage({ params }: Props) {
             )}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
+            {drama.playbackUrl ? (
+              <a
+                href="#movie-player"
+                className="btn-primary inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"
+              >
+                {t("watchNow")}
+              </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                className="inline-flex cursor-not-allowed rounded-full border border-card-border bg-card px-5 py-2.5 text-sm font-semibold text-muted opacity-70"
+                title={t("noPlayback")}
+              >
+                {t("watchNow")}
+              </button>
+            )}
             <Link
               href={`/search?q=${encodeURIComponent(drama.title.split(",")[0]?.trim() ?? drama.title)}`}
               className="btn-primary inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"

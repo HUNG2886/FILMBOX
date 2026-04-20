@@ -132,6 +132,7 @@
     "noSynopsis": "Chưa có mô tả chi tiết cho bản demo.",
     "noPlayback": "Phim này chưa được thêm nguồn phát.",
     "playbackNotSupported": "Trình duyệt của bạn không hỗ trợ nguồn phát này.",
+    "watchNow": "Xem phim",
     "relatedSearch": "Tìm phim liên quan",
     "viewGenres": "Xem thể loại",
     "urlSample": "URL mẫu: /movie/{bookId}/{slug}",
