@@ -156,7 +156,9 @@ export async function createMovieAction(formData: FormData) {
   const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
   const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
   const kind = normalizeMovieKind(formData.get("kind"));
-  const episodesCount = parseIntSafe(formData.get("episodes"), 1);
+  // SINGLE movies always collapse to 1 episode even if the client bypasses the hidden input.
+  const episodesCount =
+    kind === "SINGLE" ? 1 : parseIntSafe(formData.get("episodes"), 1);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {
@@ -218,7 +220,9 @@ export async function updateMovieAction(formData: FormData) {
   const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
   const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
   const kind = normalizeMovieKind(formData.get("kind"));
-  const episodesCount = parseIntSafe(formData.get("episodes"), 1);
+  // SINGLE movies always collapse to 1 episode even if the client bypasses the hidden input.
+  const episodesCount =
+    kind === "SINGLE" ? 1 : parseIntSafe(formData.get("episodes"), 1);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {

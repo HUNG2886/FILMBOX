@@ -2,6 +2,7 @@ import type { Episode, Movie } from "@prisma/client";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { AccessRadio } from "@/components/admin/AccessRadio";
+import { EpisodesCountField } from "@/components/admin/EpisodesCountField";
 import { EpisodesEditor } from "@/components/admin/EpisodesEditor";
 import { archiveMovieAction, createMovieAction, updateMovieAction } from "@/lib/admin/actions";
 import { MOVIE_KINDS, normalizeMovieKind } from "@/lib/movie-kind";
@@ -42,6 +43,25 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
           defaultValue={m?.title ?? ""}
           className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
         />
+      </div>
+
+      <div>
+        <label className="mb-1 block text-sm font-medium" htmlFor="kind">
+          {t("fieldKind")}
+        </label>
+        <select
+          id="kind"
+          name="kind"
+          defaultValue={initialKind}
+          className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
+        >
+          {MOVIE_KINDS.map((k) => (
+            <option key={k} value={k}>
+              {t(`kind_${k.toLowerCase()}`)}
+            </option>
+          ))}
+        </select>
+        <p className="mt-1 text-xs text-muted">{t("kindHint")}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -85,20 +105,7 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="mb-1 block text-sm font-medium" htmlFor="episodes">
-            {t("fieldEpisodes")} *
-          </label>
-          <input
-            id="episodes"
-            name="episodes"
-            type="number"
-            min={1}
-            required
-            defaultValue={m?.episodes ?? 1}
-            className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
-          />
-        </div>
+        <EpisodesCountField initialKind={initialKind} initialCount={m?.episodes ?? 1} />
         <div>
           <label className="mb-1 block text-sm font-medium" htmlFor="shelfOrder">
             {t("fieldShelfOrder")}
@@ -136,25 +143,6 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
           defaultValue={m?.posterSrc ?? ""}
           className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
         />
-      </div>
-
-      <div>
-        <label className="mb-1 block text-sm font-medium" htmlFor="kind">
-          {t("fieldKind")}
-        </label>
-        <select
-          id="kind"
-          name="kind"
-          defaultValue={initialKind}
-          className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
-        >
-          {MOVIE_KINDS.map((k) => (
-            <option key={k} value={k}>
-              {t(`kind_${k.toLowerCase()}`)}
-            </option>
-          ))}
-        </select>
-        <p className="mt-1 text-xs text-muted">{t("kindHint")}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
