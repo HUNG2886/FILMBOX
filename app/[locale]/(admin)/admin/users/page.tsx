@@ -1,8 +1,12 @@
 import { getTranslations } from "next-intl/server";
+import { Search, X } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { setUserVipAction } from "@/lib/admin/actions";
 import { UserDeleteForm } from "@/components/admin/UserDeleteForm";
 import { prisma } from "@/lib/prisma";
 import { formatVipUntil, isVipActive } from "@/lib/vip";
+
+const PAGE_LIMIT = 100;
 
 export async function generateMetadata({
   params,
@@ -14,31 +18,94 @@ export async function generateMetadata({
   return { title: t("metaTitle") };
 }
 
-export default async function AdminUsersPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ locale: string }>;
-}) {
+  searchParams: Promise<{ q?: string }>;
+};
+
+export default async function AdminUsersPage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const { q: rawQ } = await searchParams;
   const t = await getTranslations({ locale, namespace: "AdminUsers" });
 
-  const users = await prisma.user.findMany({
-    orderBy: [{ createdAt: "desc" }],
-    select: {
-      id: true,
-      email: true,
-      role: true,
-      vipUntil: true,
-      createdAt: true,
-    },
-  });
+  const q = rawQ?.trim() ?? "";
+  const where = q
+    ? { email: { contains: q, mode: "insensitive" as const } }
+    : {};
+
+  const [users, total] = await Promise.all([
+    prisma.user.findMany({
+      where,
+      orderBy: [{ createdAt: "desc" }],
+      take: PAGE_LIMIT,
+      select: {
+        id: true,
+        email: true,
+        role: true,
+        vipUntil: true,
+        createdAt: true,
+      },
+    }),
+    prisma.user.count({ where }),
+  ]);
+
+  const truncated = total > users.length;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-bold text-foreground">{t("heading")}</h1>
-        <p className="text-xs text-muted">{t("totalLabel", { count: users.length })}</p>
+        <p className="text-xs text-muted">
+          {q
+            ? t("resultsLabel", { count: total })
+            : t("totalLabel", { count: total })}
+        </p>
       </div>
+
+      <form
+        method="get"
+        className="mb-4 flex flex-wrap items-center gap-2"
+        role="search"
+      >
+        <label htmlFor="admin-user-search" className="sr-only">
+          {t("searchPlaceholder")}
+        </label>
+        <div className="relative flex-1 sm:min-w-[260px] sm:max-w-sm">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+            aria-hidden
+          />
+          <input
+            id="admin-user-search"
+            type="search"
+            name="q"
+            defaultValue={q}
+            placeholder={t("searchPlaceholder")}
+            className="w-full rounded-full border border-card-border bg-background py-2 pl-9 pr-3 text-sm"
+          />
+        </div>
+        <button
+          type="submit"
+          className="rounded-full border border-accent/40 px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10"
+        >
+          {t("searchBtn")}
+        </button>
+        {q && (
+          <Link
+            href="/admin/users"
+            className="inline-flex items-center gap-1 rounded-full border border-card-border px-3 py-2 text-sm text-muted transition hover:text-foreground"
+          >
+            <X className="h-3.5 w-3.5" aria-hidden />
+            {t("searchClear")}
+          </Link>
+        )}
+      </form>
+
+      {!q && truncated && (
+        <p className="mb-3 text-xs text-muted">
+          {t("limitedHint", { shown: users.length, total })}
+        </p>
+      )}
 
       <div className="overflow-x-auto rounded-xl border border-card-border">
         <table className="w-full min-w-[720px] text-left text-sm">
@@ -124,7 +191,9 @@ export default async function AdminUsersPage({
       </div>
 
       {users.length === 0 && (
-        <p className="mt-6 text-center text-sm text-muted">{t("empty")}</p>
+        <p className="mt-6 text-center text-sm text-muted">
+          {q ? t("noResults", { q }) : t("empty")}
+        </p>
       )}
     </div>
   );
