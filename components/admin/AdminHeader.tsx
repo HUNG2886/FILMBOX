@@ -17,9 +17,31 @@ export function AdminHeader() {
             ← {t("backSite")}
           </Link>
           {!isLogin && (
-            <Link href="/admin/movies" className="text-sm font-bold text-foreground">
-              {t("title")}
-            </Link>
+            <>
+              <Link href="/admin/movies" className="text-sm font-bold text-foreground">
+                {t("title")}
+              </Link>
+              <Link
+                href="/admin/movies"
+                className={
+                  pathname.startsWith("/admin/movies")
+                    ? "text-sm font-medium text-accent"
+                    : "text-sm font-medium text-muted hover:text-foreground"
+                }
+              >
+                {t("navMovies")}
+              </Link>
+              <Link
+                href="/admin/users"
+                className={
+                  pathname.startsWith("/admin/users")
+                    ? "text-sm font-medium text-accent"
+                    : "text-sm font-medium text-muted hover:text-foreground"
+                }
+              >
+                {t("navUsers")}
+              </Link>
+            </>
           )}
           {isLogin && <span className="text-sm font-bold text-foreground">{t("title")}</span>}
         </div>

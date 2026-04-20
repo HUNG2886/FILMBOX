@@ -296,3 +296,63 @@ export async function deleteMovieAction(formData: FormData) {
   revalidatePath(`/${locale}`, "layout");
   redirect(`/${locale}/admin/movies`);
 }
+
+export async function setUserVipAction(formData: FormData) {
+  await ensureAdmin();
+  const locale = await getLocale();
+  const id = String(formData.get("id") ?? "");
+  const daysRaw = String(formData.get("days") ?? "");
+  if (!id) redirect(`/${locale}/admin/users`);
+
+  if (daysRaw === "revoke") {
+    await prisma.user.update({ where: { id }, data: { vipUntil: null } });
+    revalidatePath(`/${locale}/admin/users`);
+    redirect(`/${locale}/admin/users`);
+  }
+
+  const days = Number.parseInt(daysRaw, 10);
+  if (!Number.isFinite(days) || days <= 0 || days > 3650) {
+    redirect(`/${locale}/admin/users`);
+  }
+
+  // Extend from existing vipUntil if still active, otherwise from now.
+  const current = await prisma.user.findUnique({
+    where: { id },
+    select: { vipUntil: true, role: true },
+  });
+  if (!current || current.role !== "user") {
+    redirect(`/${locale}/admin/users`);
+  }
+  const base =
+    current!.vipUntil && current!.vipUntil.getTime() > Date.now()
+      ? current!.vipUntil.getTime()
+      : Date.now();
+  const vipUntil = new Date(base + days * 86_400_000);
+
+  await prisma.user.update({ where: { id }, data: { vipUntil } });
+  revalidatePath(`/${locale}/admin/users`);
+  redirect(`/${locale}/admin/users`);
+}
+
+export async function deleteUserAction(formData: FormData) {
+  const actor = await ensureAdmin();
+  const locale = await getLocale();
+  const id = String(formData.get("id") ?? "");
+  if (!id) redirect(`/${locale}/admin/users`);
+
+  // Never let admin delete themselves or another admin by accident.
+  if (id === actor.id) {
+    redirect(`/${locale}/admin/users`);
+  }
+  const target = await prisma.user.findUnique({
+    where: { id },
+    select: { role: true },
+  });
+  if (!target || target.role === "admin") {
+    redirect(`/${locale}/admin/users`);
+  }
+
+  await prisma.user.delete({ where: { id } });
+  revalidatePath(`/${locale}/admin/users`);
+  redirect(`/${locale}/admin/users`);
+}

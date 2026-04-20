@@ -1,8 +1,11 @@
 import { getTranslations } from "next-intl/server";
+import { Crown, Lock } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getDramaByPath } from "@/lib/dramas";
 import { episodeHref, movieHref } from "@/lib/routes";
+import { getUserSession } from "@/lib/user-session";
+import { isVipActive } from "@/lib/vip";
 
 const PAGE_SIZE = 50;
 
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function EpisodePage({ params, searchParams }: Props) {
-  const { show, episode } = await params;
+  const { locale, show, episode } = await params;
   const parsed = parseShowParam(show);
   if (!parsed) notFound();
 
@@ -55,15 +58,23 @@ export default async function EpisodePage({ params, searchParams }: Props) {
   if (!drama) notFound();
 
   const t = await getTranslations("Movie");
+  const tp = await getTranslations("Paywall");
   const currentEpisode = Math.min(
     drama.episodes,
     Math.max(1, parseEpisodeNumber(episode)),
   );
 
+  const user = await getUserSession();
+  const vipActive = isVipActive(user);
+  const gated = drama.exclusive && !vipActive;
+
   const ep = drama.episodesList?.find((e) => e.number === currentEpisode);
   const isSeries = drama.kind === "SERIES";
   const playbackType = ep?.playbackType ?? drama.playbackType;
   const playbackUrl = ep?.playbackUrl ?? drama.playbackUrl;
+
+  const currentPathForRedirect = `/${locale}/ep/${show}/${episode}`;
+  const loginHref = `/account/login?next=${encodeURIComponent(currentPathForRedirect)}`;
 
   const sp = (await searchParams) ?? {};
   const totalPages = Math.max(1, Math.ceil(drama.episodes / PAGE_SIZE));
@@ -106,7 +117,38 @@ export default async function EpisodePage({ params, searchParams }: Props) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="overflow-hidden rounded-xl border border-card-border bg-card">
-          {playbackUrl ? (
+          {gated ? (
+            <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 bg-background p-6 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-500/15 text-yellow-500">
+                {user ? <Crown className="h-7 w-7" /> : <Lock className="h-7 w-7" />}
+              </div>
+              <div>
+                <h2 className="text-lg font-semibold text-foreground">
+                  {user ? tp("vipOnlyTitle") : tp("signInRequiredTitle")}
+                </h2>
+                <p className="mt-1 text-sm text-muted">
+                  {user ? tp("vipOnlyBody") : tp("signInRequiredBody")}
+                </p>
+              </div>
+              {user ? (
+                <Link
+                  href="/account/vip"
+                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600"
+                >
+                  <Crown className="h-4 w-4" />
+                  {tp("upgradeCta")}
+                </Link>
+              ) : (
+                <Link
+                  href={loginHref}
+                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600"
+                >
+                  <Lock className="h-4 w-4" />
+                  {tp("signInCta")}
+                </Link>
+              )}
+            </div>
+          ) : playbackUrl ? (
             playbackType === "drive" || playbackType === "external" ? (
               <iframe
                 src={playbackUrl}
