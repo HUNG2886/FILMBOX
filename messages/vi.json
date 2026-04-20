@@ -276,6 +276,8 @@
     "fieldShelfOrder": "Thứ tự kệ",
     "fieldTag": "Thẻ / tag",
     "fieldPoster": "URL poster",
+    "imageUrlHint": "https://... (ảnh JPG/PNG/WebP)",
+    "imageUrlSupportedHint": "Dán link ảnh công khai từ bất kỳ nguồn nào (Drive, TMDB, Unsplash, CDN...). Link Drive sẽ tự chuyển sang dạng trực tiếp.",
     "fieldKind": "Loại phim",
     "kind_single": "Phim lẻ",
     "kind_series": "Phim dài tập",

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { AccessRadio } from "@/components/admin/AccessRadio";
 import { EpisodesCountField } from "@/components/admin/EpisodesCountField";
 import { EpisodesEditor } from "@/components/admin/EpisodesEditor";
+import { PosterUrlField } from "@/components/admin/PosterUrlField";
 import { archiveMovieAction, createMovieAction, updateMovieAction } from "@/lib/admin/actions";
 import { MOVIE_KINDS, normalizeMovieKind } from "@/lib/movie-kind";
 import { MOVIE_STATUS } from "@/lib/movie-status";
@@ -132,18 +133,14 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
         />
       </div>
 
-      <div>
-        <label className="mb-1 block text-sm font-medium" htmlFor="posterSrc">
-          {t("fieldPoster")} *
-        </label>
-        <input
-          id="posterSrc"
-          name="posterSrc"
-          required
-          defaultValue={m?.posterSrc ?? ""}
-          className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
-        />
-      </div>
+      <PosterUrlField
+        required
+        defaultValue={m?.posterSrc ?? ""}
+        label={t("fieldPoster")}
+        placeholder={t("imageUrlHint")}
+        hint={t("imageUrlSupportedHint")}
+        previewAlt={m?.title ?? t("fieldPoster")}
+      />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>

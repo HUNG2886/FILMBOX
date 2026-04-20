@@ -94,8 +94,9 @@ export function EpisodesEditor({
                 playbackType: t("fieldPlaybackType"),
                 playbackUrl: t("fieldPlaybackUrl"),
                 playbackNone: t("playbackTypeNone"),
-                urlHint: t("playbackUrlHint"),
-                thumbnailAlt: t("episodeThumbnailAlt", { n }),
+              urlHint: t("playbackUrlHint"),
+              thumbnailHint: t("imageUrlHint"),
+              thumbnailAlt: t("episodeThumbnailAlt", { n }),
                 access: t("episodeAccessLabel"),
                 free: t("episodeFree"),
                 paid: t("episodePaid"),
@@ -116,6 +117,7 @@ type RowLabels = {
   playbackUrl: string;
   playbackNone: string;
   urlHint: string;
+  thumbnailHint: string;
   thumbnailAlt: string;
   access: string;
   free: string;
@@ -178,6 +180,7 @@ function EpisodeRow({
             id={`ep_${number}_thumbnail`}
             name={`ep_${number}_thumbnail`}
             defaultValue={initial?.thumbnail ?? ""}
+            placeholder={labels.thumbnailHint}
             onChange={(e) => setThumbnail(e.currentTarget.value.trim())}
             className="w-full rounded-md border border-card-border bg-background px-2 py-1.5 text-sm"
           />

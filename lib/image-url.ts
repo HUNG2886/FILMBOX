@@ -1,12 +1,13 @@
 /**
- * Normalize common Google Drive share links into direct image URLs.
- * This helps Next/Image load posters from Drive-hosted files.
+ * Chuẩn hoá URL ảnh do admin nhập: tự convert link share Google Drive sang
+ * dạng trực tiếp, và chặn scheme không an toàn (data:, javascript:, file:...).
+ * Các URL http(s) khác được giữ nguyên để dùng với next/image (remotePatterns
+ * trong next.config.ts cho phép mọi host HTTPS).
  */
 export function normalizeImageUrl(raw: string): string {
   const input = raw.trim();
   if (!input) return input;
 
-  // Direct file id input (rare): treat as Drive file id.
   if (/^[a-zA-Z0-9_-]{20,}$/.test(input)) {
     return `https://drive.google.com/uc?export=view&id=${input}`;
   }
@@ -15,21 +16,20 @@ export function normalizeImageUrl(raw: string): string {
   try {
     url = new URL(input);
   } catch {
-    return input;
+    return input.startsWith("/") ? input : "";
+  }
+
+  if (url.protocol !== "http:" && url.protocol !== "https:") {
+    return "";
   }
 
   const host = url.hostname.toLowerCase();
 
-  // If already direct-drive style, keep it as-is.
   if (host === "drive.google.com" && url.pathname === "/uc") {
     return input;
   }
 
   if (host === "drive.google.com") {
-    // Patterns:
-    // - /file/d/<id>/view
-    // - /open?id=<id>
-    // - /thumbnail?id=<id>...
     const parts = url.pathname.split("/").filter(Boolean);
     const dIndex = parts.findIndex((p) => p === "d");
     const fromPath =

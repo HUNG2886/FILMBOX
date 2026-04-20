@@ -276,6 +276,8 @@
     "fieldShelfOrder": "Shelf order",
     "fieldTag": "Tag",
     "fieldPoster": "Poster URL",
+    "imageUrlHint": "https://... (JPG/PNG/WebP image)",
+    "imageUrlSupportedHint": "Paste any public image URL (Drive, TMDB, Unsplash, your own CDN...). Drive share links are converted to direct URLs automatically.",
     "fieldKind": "Movie kind",
     "kind_single": "Single film",
     "kind_series": "Series",
