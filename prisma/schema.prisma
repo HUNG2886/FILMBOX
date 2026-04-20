@@ -24,6 +24,7 @@ model Movie {
   episodes         Int
   tag              String?
   posterSrc        String
+  kind             String      @default("SINGLE")
   playbackType     String?
   playbackUrl      String?
   exclusive        Boolean     @default(false)
@@ -35,7 +36,24 @@ model Movie {
   shelfOrder       Int         @default(0)
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
+  episodesRel      Episode[]
 
   @@unique([bookId, slug])
   @@index([status])
+}
+
+model Episode {
+  id           String   @id @default(cuid())
+  movieId      String
+  number       Int
+  title        String?
+  thumbnail    String?
+  playbackType String?
+  playbackUrl  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  movie        Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([movieId, number])
+  @@index([movieId])
 }

@@ -14,7 +14,10 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function EditMoviePage({ params }: Props) {
   const { id } = await params;
-  const m = await prisma.movie.findUnique({ where: { id } });
+  const m = await prisma.movie.findUnique({
+    where: { id },
+    include: { episodesRel: { orderBy: { number: "asc" } } },
+  });
   if (!m) notFound();
 
   const t = await getTranslations("Admin");
@@ -24,7 +27,7 @@ export default async function EditMoviePage({ params }: Props) {
       <h1 className="pt-8 text-xl font-bold text-foreground">
         {t("editMovieHeading")}: {m.title}
       </h1>
-      <MovieForm movie={m} />
+      <MovieForm movie={m} episodes={m.episodesRel} />
       <MovieArchiveForm movieId={m.id} />
     </div>
   );

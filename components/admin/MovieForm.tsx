@@ -1,18 +1,29 @@
-import type { Movie } from "@prisma/client";
+import type { Episode, Movie } from "@prisma/client";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { EpisodesEditor } from "@/components/admin/EpisodesEditor";
 import { archiveMovieAction, createMovieAction, updateMovieAction } from "@/lib/admin/actions";
+import { MOVIE_KINDS, normalizeMovieKind } from "@/lib/movie-kind";
 import { MOVIE_STATUS } from "@/lib/movie-status";
 import { PLAYBACK_TYPES } from "@/lib/playback-url";
 
 type Props = {
   movie?: Movie;
+  episodes?: Episode[];
 };
 
-export async function MovieForm({ movie }: Props) {
+export async function MovieForm({ movie, episodes = [] }: Props) {
   const t = await getTranslations("Admin");
   const action = movie ? updateMovieAction : createMovieAction;
   const m = movie;
+  const initialKind = normalizeMovieKind(m?.kind);
+  const initialEpisodes = episodes.map((e) => ({
+    number: e.number,
+    title: e.title ?? undefined,
+    thumbnail: e.thumbnail ?? undefined,
+    playbackType: e.playbackType ?? undefined,
+    playbackUrl: e.playbackUrl ?? undefined,
+  }));
 
   return (
     <form action={action} className="mx-auto max-w-xl space-y-4 py-8">
@@ -125,6 +136,25 @@ export async function MovieForm({ movie }: Props) {
         />
       </div>
 
+      <div>
+        <label className="mb-1 block text-sm font-medium" htmlFor="kind">
+          {t("fieldKind")}
+        </label>
+        <select
+          id="kind"
+          name="kind"
+          defaultValue={initialKind}
+          className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
+        >
+          {MOVIE_KINDS.map((k) => (
+            <option key={k} value={k}>
+              {t(`kind_${k.toLowerCase()}`)}
+            </option>
+          ))}
+        </select>
+        <p className="mt-1 text-xs text-muted">{t("kindHint")}</p>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className="mb-1 block text-sm font-medium" htmlFor="playbackType">
@@ -157,6 +187,12 @@ export async function MovieForm({ movie }: Props) {
           />
         </div>
       </div>
+
+      <EpisodesEditor
+        initialEpisodes={initialEpisodes}
+        initialCount={m?.episodes ?? 1}
+        initialKind={initialKind}
+      />
 
       <div>
         <label className="mb-1 block text-sm font-medium" htmlFor="status">

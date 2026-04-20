@@ -11,7 +11,10 @@ function drama(
   id: string,
   bookId: string,
   title: string,
-  rest: Omit<Drama, "id" | "bookId" | "slug" | "title"> & { slug?: string },
+  rest: Omit<Drama, "id" | "bookId" | "slug" | "title" | "kind"> & {
+    slug?: string;
+    kind?: Drama["kind"];
+  },
 ): Drama {
   return {
     id,
@@ -22,6 +25,7 @@ function drama(
     synopsis: rest.synopsis,
     tag: rest.tag,
     posterSrc: rest.posterSrc,
+    kind: rest.kind ?? "SINGLE",
     exclusive: rest.exclusive,
   };
 }

@@ -8,6 +8,7 @@ import { getLocale } from "next-intl/server";
 import { logAuthEvent } from "@/lib/auth-log";
 import { adminSessionCookieName, signAdminToken } from "@/lib/auth-jwt";
 import { normalizeImageUrl } from "@/lib/image-url";
+import { normalizeMovieKind } from "@/lib/movie-kind";
 import { normalizePlaybackUrl } from "@/lib/playback-url";
 import { prisma } from "@/lib/prisma";
 import { MOVIE_STATUS } from "@/lib/movie-status";
@@ -39,6 +40,37 @@ function bool(formData: FormData, key: string) {
 function parseIntSafe(v: FormDataEntryValue | null, fallback: number) {
   const n = Number.parseInt(String(v ?? ""), 10);
   return Number.isFinite(n) ? n : fallback;
+}
+
+type EpisodeRowInput = {
+  number: number;
+  title: string | null;
+  thumbnail: string | null;
+  playbackType: string | null;
+  playbackUrl: string | null;
+};
+
+function parseEpisodeRows(formData: FormData, count: number): EpisodeRowInput[] {
+  const rows: EpisodeRowInput[] = [];
+  const total = Math.min(500, Math.max(0, count));
+  for (let n = 1; n <= total; n += 1) {
+    const title = String(formData.get(`ep_${n}_title`) ?? "").trim();
+    const thumbnailRaw = String(formData.get(`ep_${n}_thumbnail`) ?? "").trim();
+    const playbackType = String(formData.get(`ep_${n}_playbackType`) ?? "").trim();
+    const playbackUrlRaw = String(formData.get(`ep_${n}_playbackUrl`) ?? "").trim();
+    const thumbnail = thumbnailRaw ? normalizeImageUrl(thumbnailRaw) : "";
+    const playbackUrl = playbackUrlRaw
+      ? normalizePlaybackUrl(playbackUrlRaw, playbackType)
+      : "";
+    rows.push({
+      number: n,
+      title: title || null,
+      thumbnail: thumbnail || null,
+      playbackType: playbackType || null,
+      playbackUrl: playbackUrl || null,
+    });
+  }
+  return rows;
 }
 
 export async function loginAction(formData: FormData) {
@@ -120,6 +152,8 @@ export async function createMovieAction(formData: FormData) {
   const playbackType = String(formData.get("playbackType") ?? "").trim();
   const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
   const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
+  const kind = normalizeMovieKind(formData.get("kind"));
+  const episodesCount = parseIntSafe(formData.get("episodes"), 1);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {
@@ -133,6 +167,8 @@ export async function createMovieAction(formData: FormData) {
     redirect(`/${locale}/admin/movies/new?e=duplicate`);
   }
 
+  const episodeRows = kind === "SERIES" ? parseEpisodeRows(formData, episodesCount) : [];
+
   await prisma.movie.create({
     // Accept raw Drive sharing URLs and convert to direct image links.
     data: {
@@ -140,11 +176,12 @@ export async function createMovieAction(formData: FormData) {
       slug,
       title,
       synopsis: String(formData.get("synopsis") ?? ""),
-      episodes: parseIntSafe(formData.get("episodes"), 1),
+      episodes: episodesCount,
       tag: String(formData.get("tag") ?? "").trim() || null,
       posterSrc:
         normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()) ||
         "https://picsum.photos/seed/new/400/600",
+      kind,
       playbackType: playbackType || null,
       playbackUrl: playbackUrl || null,
       exclusive: bool(formData, "exclusive"),
@@ -154,6 +191,10 @@ export async function createMovieAction(formData: FormData) {
       showTrending: bool(formData, "showTrending"),
       showHidden: bool(formData, "showHidden"),
       shelfOrder: parseIntSafe(formData.get("shelfOrder"), 0),
+      episodesRel:
+        episodeRows.length > 0
+          ? { create: episodeRows }
+          : undefined,
     },
   });
 
@@ -172,6 +213,8 @@ export async function updateMovieAction(formData: FormData) {
   const playbackType = String(formData.get("playbackType") ?? "").trim();
   const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
   const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
+  const kind = normalizeMovieKind(formData.get("kind"));
+  const episodesCount = parseIntSafe(formData.get("episodes"), 1);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {
@@ -189,27 +232,38 @@ export async function updateMovieAction(formData: FormData) {
     redirect(`/${locale}/admin/movies/${id}/edit?e=duplicate`);
   }
 
-  await prisma.movie.update({
-    where: { id },
-    data: {
-      bookId,
-      slug,
-      title,
-      synopsis: String(formData.get("synopsis") ?? ""),
-      episodes: parseIntSafe(formData.get("episodes"), 1),
-      tag: String(formData.get("tag") ?? "").trim() || null,
-      posterSrc: normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()),
-      playbackType: playbackType || null,
-      playbackUrl: playbackUrl || null,
-      exclusive: bool(formData, "exclusive"),
-      status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
-      showCarousel: bool(formData, "showCarousel"),
-      showRecommended: bool(formData, "showRecommended"),
-      showTrending: bool(formData, "showTrending"),
-      showHidden: bool(formData, "showHidden"),
-      shelfOrder: parseIntSafe(formData.get("shelfOrder"), 0),
-    },
-  });
+  const episodeRows = kind === "SERIES" ? parseEpisodeRows(formData, episodesCount) : [];
+
+  // Replace all episodes in a single transaction so series rows match the form.
+  await prisma.$transaction([
+    prisma.episode.deleteMany({ where: { movieId: id } }),
+    prisma.movie.update({
+      where: { id },
+      data: {
+        bookId,
+        slug,
+        title,
+        synopsis: String(formData.get("synopsis") ?? ""),
+        episodes: episodesCount,
+        tag: String(formData.get("tag") ?? "").trim() || null,
+        posterSrc: normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()),
+        kind,
+        playbackType: playbackType || null,
+        playbackUrl: playbackUrl || null,
+        exclusive: bool(formData, "exclusive"),
+        status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
+        showCarousel: bool(formData, "showCarousel"),
+        showRecommended: bool(formData, "showRecommended"),
+        showTrending: bool(formData, "showTrending"),
+        showHidden: bool(formData, "showHidden"),
+        shelfOrder: parseIntSafe(formData.get("shelfOrder"), 0),
+        episodesRel:
+          episodeRows.length > 0
+            ? { create: episodeRows }
+            : undefined,
+      },
+    }),
+  ]);
 
   revalidatePath(`/${locale}`, "layout");
   redirect(`/${locale}/admin/movies`);

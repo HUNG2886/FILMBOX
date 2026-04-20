@@ -39,7 +39,11 @@ export default async function MoviePage({ params }: Props) {
         </div>
         <div className="min-w-0 flex-1">
           <h1 className="text-3xl font-bold text-foreground">{drama.title}</h1>
-          <p className="mt-2 text-accent">{t("episodes", { count: drama.episodes })}</p>
+          <p className="mt-2 text-accent">
+            {drama.kind === "SERIES"
+              ? t("kindSeriesLabel", { count: drama.episodes })
+              : t("kindSingleLabel")}
+          </p>
           <p className="mt-4 text-sm text-muted">
             <span className="font-semibold text-foreground">{t("actorsLabel")}: </span>
             {drama.tag || t("actorsUnknown")}

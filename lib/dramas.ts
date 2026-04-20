@@ -1,12 +1,25 @@
-import type { Movie } from "@prisma/client";
+import type { Episode, Movie } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import type { Drama } from "@/lib/dramas-types";
+import type { Drama, DramaEpisode } from "@/lib/dramas-types";
 import { normalizeImageUrl } from "@/lib/image-url";
+import { normalizeMovieKind } from "@/lib/movie-kind";
 import { MOVIE_STATUS } from "@/lib/movie-status";
 
 export type { Drama } from "@/lib/dramas-types";
 
-export function movieToDrama(m: Movie): Drama {
+type MovieWithEpisodes = Movie & { episodesRel?: Episode[] };
+
+function episodeToDramaEpisode(e: Episode): DramaEpisode {
+  return {
+    number: e.number,
+    title: e.title ?? undefined,
+    thumbnail: e.thumbnail ? normalizeImageUrl(e.thumbnail) : undefined,
+    playbackType: e.playbackType ?? undefined,
+    playbackUrl: e.playbackUrl ?? undefined,
+  };
+}
+
+export function movieToDrama(m: MovieWithEpisodes): Drama {
   return {
     id: m.id,
     bookId: m.bookId,
@@ -16,9 +29,11 @@ export function movieToDrama(m: Movie): Drama {
     synopsis: m.synopsis,
     tag: m.tag ?? undefined,
     posterSrc: normalizeImageUrl(m.posterSrc),
+    kind: normalizeMovieKind(m.kind),
     playbackType: m.playbackType ?? undefined,
     playbackUrl: m.playbackUrl ?? undefined,
     exclusive: m.exclusive,
+    episodesList: m.episodesRel?.map(episodeToDramaEpisode),
   };
 }
 
@@ -70,6 +85,9 @@ export async function getDramaByPath(bookId: string, slug: string): Promise<Dram
       bookId,
       slug,
       status: MOVIE_STATUS.PUBLISHED,
+    },
+    include: {
+      episodesRel: { orderBy: { number: "asc" } },
     },
   });
   return row ? movieToDrama(row) : undefined;
