@@ -4,6 +4,7 @@ import { Crown, Lock } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getDramaByPath } from "@/lib/dramas";
+import { hasPaidContent } from "@/lib/dramas-types";
 import { episodeHref } from "@/lib/routes";
 import { getUserSession } from "@/lib/user-session";
 import { isVipActive } from "@/lib/vip";
@@ -30,7 +31,9 @@ export default async function MoviePage({ params }: Props) {
 
   const user = await getUserSession();
   const vipActive = isVipActive(user);
-  const gated = drama.exclusive && !vipActive;
+  // SINGLE-only gating at the movie level; SERIES gating is evaluated per-episode on /ep.
+  const gated = drama.kind === "SINGLE" && !!drama.exclusive && !vipActive;
+  const showVipBadge = hasPaidContent(drama);
 
   const watchPath = episodeHref(drama, 1);
   const localizedWatchPath = `/${locale}${watchPath}`;
@@ -48,7 +51,7 @@ export default async function MoviePage({ params }: Props) {
       <div className="mt-8 flex flex-col gap-8 sm:flex-row">
         <div className="relative mx-auto aspect-[2/3] w-full max-w-[240px] shrink-0 overflow-hidden rounded-2xl border border-card-border sm:mx-0">
           <Image src={drama.posterSrc} alt={drama.title} fill className="object-cover" sizes="240px" priority />
-          {drama.exclusive && (
+          {showVipBadge && (
             <span className="badge-vip absolute left-2 top-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold">
               <Crown className="h-3 w-3" />
               VIP

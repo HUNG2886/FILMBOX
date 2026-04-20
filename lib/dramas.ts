@@ -16,6 +16,7 @@ function episodeToDramaEpisode(e: Episode): DramaEpisode {
     thumbnail: e.thumbnail ? normalizeImageUrl(e.thumbnail) : undefined,
     playbackType: e.playbackType ?? undefined,
     playbackUrl: e.playbackUrl ?? undefined,
+    paid: e.paid,
   };
 }
 

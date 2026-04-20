@@ -11,6 +11,7 @@ type InitialEpisode = {
   thumbnail?: string;
   playbackType?: string;
   playbackUrl?: string;
+  paid?: boolean;
 };
 
 type Props = {
@@ -95,6 +96,9 @@ export function EpisodesEditor({
                 playbackNone: t("playbackTypeNone"),
                 urlHint: t("playbackUrlHint"),
                 thumbnailAlt: t("episodeThumbnailAlt", { n }),
+                access: t("episodeAccessLabel"),
+                free: t("episodeFree"),
+                paid: t("episodePaid"),
               }}
             />
           );
@@ -113,6 +117,9 @@ type RowLabels = {
   playbackNone: string;
   urlHint: string;
   thumbnailAlt: string;
+  access: string;
+  free: string;
+  paid: string;
 };
 
 function EpisodeRow({
@@ -210,6 +217,29 @@ function EpisodeRow({
             placeholder={labels.urlHint}
             className="w-full rounded-md border border-card-border bg-background px-2 py-1.5 text-sm"
           />
+        </div>
+        <div className="sm:col-span-2">
+          <fieldset className="flex flex-wrap items-center gap-4 text-xs">
+            <legend className="mr-2 text-muted">{labels.access}</legend>
+            <label className="inline-flex items-center gap-1.5 text-foreground">
+              <input
+                type="radio"
+                name={`ep_${number}_paid`}
+                value="false"
+                defaultChecked={!initial?.paid}
+              />
+              {labels.free}
+            </label>
+            <label className="inline-flex items-center gap-1.5 text-foreground">
+              <input
+                type="radio"
+                name={`ep_${number}_paid`}
+                value="true"
+                defaultChecked={!!initial?.paid}
+              />
+              {labels.paid}
+            </label>
+          </fieldset>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import type { Episode, Movie } from "@prisma/client";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { AccessRadio } from "@/components/admin/AccessRadio";
 import { EpisodesEditor } from "@/components/admin/EpisodesEditor";
 import { archiveMovieAction, createMovieAction, updateMovieAction } from "@/lib/admin/actions";
 import { MOVIE_KINDS, normalizeMovieKind } from "@/lib/movie-kind";
@@ -23,6 +24,7 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
     thumbnail: e.thumbnail ?? undefined,
     playbackType: e.playbackType ?? undefined,
     playbackUrl: e.playbackUrl ?? undefined,
+    paid: e.paid,
   }));
 
   return (
@@ -232,10 +234,7 @@ export async function MovieForm({ movie, episodes = [] }: Props) {
         </div>
       </fieldset>
 
-      <label className="flex items-center gap-2 text-sm">
-        <input type="checkbox" name="exclusive" defaultChecked={m?.exclusive} />
-        {t("fieldExclusive")}
-      </label>
+      <AccessRadio initialKind={initialKind} initialExclusive={!!m?.exclusive} />
 
       <div className="flex flex-wrap gap-3 pt-2">
         <button type="submit" className="btn-primary rounded-full px-6 py-2 text-sm font-semibold">

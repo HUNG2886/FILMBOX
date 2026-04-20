@@ -3,6 +3,7 @@ import { Crown, Lock } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getDramaByPath } from "@/lib/dramas";
+import { isEpisodePaid } from "@/lib/dramas-types";
 import { episodeHref, movieHref } from "@/lib/routes";
 import { getUserSession } from "@/lib/user-session";
 import { isVipActive } from "@/lib/vip";
@@ -66,7 +67,7 @@ export default async function EpisodePage({ params, searchParams }: Props) {
 
   const user = await getUserSession();
   const vipActive = isVipActive(user);
-  const gated = drama.exclusive && !vipActive;
+  const gated = isEpisodePaid(drama, currentEpisode) && !vipActive;
 
   const ep = drama.episodesList?.find((e) => e.number === currentEpisode);
   const isSeries = drama.kind === "SERIES";
@@ -177,9 +178,10 @@ export default async function EpisodePage({ params, searchParams }: Props) {
             {Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i).map((n) => {
               const active = n === currentEpisode;
               const item = drama.episodesList?.find((e) => e.number === n);
+              const paid = isEpisodePaid(drama, n);
               const label = item?.title
-                ? `${t("episodeLabel", { n })} — ${item.title}`
-                : t("episodeLabel", { n });
+                ? `${t("episodeLabel", { n })} — ${item.title}${paid ? ` · ${tp("vipOnlyTitle")}` : ""}`
+                : `${t("episodeLabel", { n })}${paid ? ` · ${tp("vipOnlyTitle")}` : ""}`;
               return (
                 <Link
                   key={n}
@@ -188,11 +190,19 @@ export default async function EpisodePage({ params, searchParams }: Props) {
                   title={label}
                   className={
                     active
-                      ? "flex aspect-square items-center justify-center rounded-md border border-accent bg-accent/15 text-xs font-semibold text-accent"
-                      : "flex aspect-square items-center justify-center rounded-md border border-card-border bg-background text-xs font-medium text-foreground hover:border-accent/50"
+                      ? "relative flex aspect-square items-center justify-center rounded-md border border-accent bg-accent/15 text-xs font-semibold text-accent"
+                      : "relative flex aspect-square items-center justify-center rounded-md border border-card-border bg-background text-xs font-medium text-foreground hover:border-accent/50"
                   }
                 >
                   {n}
+                  {paid && (
+                    <span
+                      aria-hidden
+                      className="badge-vip-soft absolute -right-1 -top-1 inline-flex h-4 w-4 items-center justify-center rounded-full"
+                    >
+                      <Crown className="h-2.5 w-2.5" />
+                    </span>
+                  )}
                 </Link>
               );
             })}

@@ -48,6 +48,7 @@ type EpisodeRowInput = {
   thumbnail: string | null;
   playbackType: string | null;
   playbackUrl: string | null;
+  paid: boolean;
 };
 
 function parseEpisodeRows(formData: FormData, count: number): EpisodeRowInput[] {
@@ -58,6 +59,7 @@ function parseEpisodeRows(formData: FormData, count: number): EpisodeRowInput[] 
     const thumbnailRaw = String(formData.get(`ep_${n}_thumbnail`) ?? "").trim();
     const playbackType = String(formData.get(`ep_${n}_playbackType`) ?? "").trim();
     const playbackUrlRaw = String(formData.get(`ep_${n}_playbackUrl`) ?? "").trim();
+    const paid = String(formData.get(`ep_${n}_paid`) ?? "") === "true";
     const thumbnail = thumbnailRaw ? normalizeImageUrl(thumbnailRaw) : "";
     const playbackUrl = playbackUrlRaw
       ? normalizePlaybackUrl(playbackUrlRaw, playbackType)
@@ -68,6 +70,7 @@ function parseEpisodeRows(formData: FormData, count: number): EpisodeRowInput[] 
       thumbnail: thumbnail || null,
       playbackType: playbackType || null,
       playbackUrl: playbackUrl || null,
+      paid,
     });
   }
   return rows;
@@ -184,7 +187,8 @@ export async function createMovieAction(formData: FormData) {
       kind,
       playbackType: playbackType || null,
       playbackUrl: playbackUrl || null,
-      exclusive: bool(formData, "exclusive"),
+      // Drama-level exclusive only applies to SINGLE movies; SERIES gating is per episode.
+      exclusive: kind === "SINGLE" ? bool(formData, "exclusive") : false,
       status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
       showCarousel: bool(formData, "showCarousel"),
       showRecommended: bool(formData, "showRecommended"),
@@ -250,7 +254,8 @@ export async function updateMovieAction(formData: FormData) {
         kind,
         playbackType: playbackType || null,
         playbackUrl: playbackUrl || null,
-        exclusive: bool(formData, "exclusive"),
+        // Drama-level exclusive only applies to SINGLE movies; SERIES gating is per episode.
+        exclusive: kind === "SINGLE" ? bool(formData, "exclusive") : false,
         status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
         showCarousel: bool(formData, "showCarousel"),
         showRecommended: bool(formData, "showRecommended"),
