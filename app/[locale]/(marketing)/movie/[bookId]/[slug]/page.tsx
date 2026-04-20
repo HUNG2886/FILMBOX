@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getDramaByPath } from "@/lib/dramas";
+import { episodeHref } from "@/lib/routes";
 
 type Props = { params: Promise<{ locale: string; bookId: string; slug: string }> };
 
@@ -71,12 +72,12 @@ export default async function MoviePage({ params }: Props) {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             {drama.playbackUrl ? (
-              <a
-                href="#movie-player"
+              <Link
+                href={episodeHref(drama, 1)}
                 className="btn-primary inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"
               >
                 {t("watchNow")}
-              </a>
+              </Link>
             ) : (
               <button
                 type="button"
