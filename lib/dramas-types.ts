@@ -8,5 +8,7 @@ export type Drama = {
   synopsis: string;
   tag?: string;
   posterSrc: string;
+  playbackType?: string;
+  playbackUrl?: string;
   exclusive?: boolean;
 };

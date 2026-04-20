@@ -16,6 +16,8 @@ export function movieToDrama(m: Movie): Drama {
     synopsis: m.synopsis,
     tag: m.tag ?? undefined,
     posterSrc: normalizeImageUrl(m.posterSrc),
+    playbackType: m.playbackType ?? undefined,
+    playbackUrl: m.playbackUrl ?? undefined,
     exclusive: m.exclusive,
   };
 }

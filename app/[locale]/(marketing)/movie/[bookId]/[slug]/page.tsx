@@ -47,6 +47,28 @@ export default async function MoviePage({ params }: Props) {
           <p className="mt-6 text-sm leading-relaxed text-muted">
             {drama.synopsis || t("noSynopsis")}
           </p>
+          <div className="mt-6">
+            {drama.playbackUrl ? (
+              <div className="overflow-hidden rounded-xl border border-card-border bg-card">
+                {drama.playbackType === "drive" || drama.playbackType === "external" ? (
+                  <iframe
+                    src={drama.playbackUrl}
+                    title={`${drama.title} player`}
+                    className="aspect-video w-full"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video className="aspect-video w-full bg-black" controls playsInline preload="metadata">
+                    <source src={drama.playbackUrl} />
+                    {t("playbackNotSupported")}
+                  </video>
+                )}
+              </div>
+            ) : (
+              <p className="text-sm text-muted">{t("noPlayback")}</p>
+            )}
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={`/search?q=${encodeURIComponent(drama.title.split(",")[0]?.trim() ?? drama.title)}`}

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { archiveMovieAction, createMovieAction, updateMovieAction } from "@/lib/admin/actions";
 import { MOVIE_STATUS } from "@/lib/movie-status";
+import { PLAYBACK_TYPES } from "@/lib/playback-url";
 
 type Props = {
   movie?: Movie;
@@ -122,6 +123,39 @@ export async function MovieForm({ movie }: Props) {
           defaultValue={m?.posterSrc ?? ""}
           className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
         />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-sm font-medium" htmlFor="playbackType">
+            {t("fieldPlaybackType")}
+          </label>
+          <select
+            id="playbackType"
+            name="playbackType"
+            defaultValue={m?.playbackType ?? ""}
+            className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
+          >
+            <option value="">{t("playbackTypeNone")}</option>
+            {PLAYBACK_TYPES.map((type) => (
+              <option key={type} value={type}>
+                {t(`playbackType_${type}`)}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium" htmlFor="playbackUrl">
+            {t("fieldPlaybackUrl")}
+          </label>
+          <input
+            id="playbackUrl"
+            name="playbackUrl"
+            defaultValue={m?.playbackUrl ?? ""}
+            placeholder={t("playbackUrlHint")}
+            className="w-full rounded-lg border border-card-border bg-background px-3 py-2 text-sm"
+          />
+        </div>
       </div>
 
       <div>

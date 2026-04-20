@@ -8,6 +8,7 @@ import { getLocale } from "next-intl/server";
 import { logAuthEvent } from "@/lib/auth-log";
 import { adminSessionCookieName, signAdminToken } from "@/lib/auth-jwt";
 import { normalizeImageUrl } from "@/lib/image-url";
+import { normalizePlaybackUrl } from "@/lib/playback-url";
 import { prisma } from "@/lib/prisma";
 import { MOVIE_STATUS } from "@/lib/movie-status";
 import { allowRateLimit } from "@/lib/rate-limit-memory";
@@ -116,6 +117,9 @@ export async function createMovieAction(formData: FormData) {
 
   const title = String(formData.get("title") ?? "").trim();
   const bookId = String(formData.get("bookId") ?? "").trim();
+  const playbackType = String(formData.get("playbackType") ?? "").trim();
+  const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
+  const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {
@@ -141,6 +145,8 @@ export async function createMovieAction(formData: FormData) {
       posterSrc:
         normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()) ||
         "https://picsum.photos/seed/new/400/600",
+      playbackType: playbackType || null,
+      playbackUrl: playbackUrl || null,
       exclusive: bool(formData, "exclusive"),
       status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
       showCarousel: bool(formData, "showCarousel"),
@@ -163,6 +169,9 @@ export async function updateMovieAction(formData: FormData) {
 
   const title = String(formData.get("title") ?? "").trim();
   const bookId = String(formData.get("bookId") ?? "").trim();
+  const playbackType = String(formData.get("playbackType") ?? "").trim();
+  const playbackUrlRaw = String(formData.get("playbackUrl") ?? "").trim();
+  const playbackUrl = normalizePlaybackUrl(playbackUrlRaw, playbackType);
   let slug = String(formData.get("slug") ?? "").trim();
   if (!slug && title) slug = slugify(title);
   if (!title || !bookId || !slug) {
@@ -190,6 +199,8 @@ export async function updateMovieAction(formData: FormData) {
       episodes: parseIntSafe(formData.get("episodes"), 1),
       tag: String(formData.get("tag") ?? "").trim() || null,
       posterSrc: normalizeImageUrl(String(formData.get("posterSrc") ?? "").trim()),
+      playbackType: playbackType || null,
+      playbackUrl: playbackUrl || null,
       exclusive: bool(formData, "exclusive"),
       status: String(formData.get("status") ?? MOVIE_STATUS.DRAFT),
       showCarousel: bool(formData, "showCarousel"),

@@ -24,6 +24,8 @@ model Movie {
   episodes         Int
   tag              String?
   posterSrc        String
+  playbackType     String?
+  playbackUrl      String?
   exclusive        Boolean     @default(false)
   status           String      @default("DRAFT")
   showCarousel     Boolean     @default(false)
