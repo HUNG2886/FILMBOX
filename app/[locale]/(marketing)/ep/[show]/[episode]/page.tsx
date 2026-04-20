@@ -1,12 +1,14 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getDramaByPath } from "@/lib/dramas";
 import { episodeHref, movieHref } from "@/lib/routes";
 
+const PAGE_SIZE = 50;
+
 type Props = {
   params: Promise<{ locale: string; show: string; episode: string }>;
+  searchParams?: Promise<{ page?: string | string[] }>;
 };
 
 function parseShowParam(show: string): { bookId: string; slug: string } | null {
@@ -24,6 +26,13 @@ function parseEpisodeNumber(segment: string): number {
   return Math.max(1, Number.parseInt(m[1], 10) || 1);
 }
 
+function parsePageParam(raw: string | string[] | undefined): number | null {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (!value) return null;
+  const n = Number.parseInt(value, 10);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
 export async function generateMetadata({ params }: Props) {
   const { locale, show, episode } = await params;
   const parsed = parseShowParam(show);
@@ -37,7 +46,7 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function EpisodePage({ params }: Props) {
+export default async function EpisodePage({ params, searchParams }: Props) {
   const { show, episode } = await params;
   const parsed = parseShowParam(show);
   if (!parsed) notFound();
@@ -55,6 +64,23 @@ export default async function EpisodePage({ params }: Props) {
   const isSeries = drama.kind === "SERIES";
   const playbackType = ep?.playbackType ?? drama.playbackType;
   const playbackUrl = ep?.playbackUrl ?? drama.playbackUrl;
+
+  const sp = (await searchParams) ?? {};
+  const totalPages = Math.max(1, Math.ceil(drama.episodes / PAGE_SIZE));
+  const requestedPage = parsePageParam(sp.page);
+  const derivedPage = Math.ceil(currentEpisode / PAGE_SIZE);
+  const currentPage = Math.min(
+    totalPages,
+    Math.max(1, requestedPage ?? derivedPage),
+  );
+  const pageStart = (currentPage - 1) * PAGE_SIZE + 1;
+  const pageEnd = Math.min(drama.episodes, currentPage * PAGE_SIZE);
+
+  const currentEpisodePath = episodeHref(drama, currentEpisode);
+  const hasPrev = currentPage > 1;
+  const hasNext = currentPage < totalPages;
+  const prevHref = `${currentEpisodePath}?page=${currentPage - 1}`;
+  const nextHref = `${currentEpisodePath}?page=${currentPage + 1}`;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -105,53 +131,62 @@ export default async function EpisodePage({ params }: Props) {
           <p className="mt-1 text-xs text-muted">
             {isSeries ? t("perEpisodeHint") : t("singleSourceHint")}
           </p>
-          <div className="mt-3 grid gap-2">
-            {Array.from({ length: drama.episodes }, (_, i) => i + 1).map((n) => {
+          <div className="mt-3 grid grid-cols-5 gap-2">
+            {Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i).map((n) => {
               const active = n === currentEpisode;
               const item = drama.episodesList?.find((e) => e.number === n);
+              const label = item?.title
+                ? `${t("episodeLabel", { n })} — ${item.title}`
+                : t("episodeLabel", { n });
               return (
                 <Link
                   key={n}
                   href={episodeHref(drama, n)}
+                  aria-label={label}
+                  title={label}
                   className={
                     active
-                      ? "flex items-center gap-3 rounded-lg border border-accent bg-accent/10 px-2 py-2"
-                      : "flex items-center gap-3 rounded-lg border border-card-border bg-background px-2 py-2 hover:border-accent/50"
+                      ? "flex aspect-square items-center justify-center rounded-md border border-accent bg-accent/15 text-xs font-semibold text-accent"
+                      : "flex aspect-square items-center justify-center rounded-md border border-card-border bg-background text-xs font-medium text-foreground hover:border-accent/50"
                   }
                 >
-                  <div className="relative h-10 w-16 shrink-0 overflow-hidden rounded-md border border-card-border bg-background">
-                    {item?.thumbnail ? (
-                      <Image
-                        src={item.thumbnail}
-                        alt={item.title ?? t("episodeLabel", { n })}
-                        fill
-                        sizes="64px"
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center text-[10px] text-muted">
-                        {n}
-                      </div>
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p
-                      className={
-                        active
-                          ? "text-xs font-semibold text-accent"
-                          : "text-xs font-semibold text-foreground"
-                      }
-                    >
-                      {t("episodeLabel", { n })}
-                    </p>
-                    {item?.title ? (
-                      <p className="line-clamp-1 text-[11px] text-muted">{item.title}</p>
-                    ) : null}
-                  </div>
+                  {n}
                 </Link>
               );
             })}
           </div>
+
+          {totalPages > 1 ? (
+            <div className="mt-4 flex items-center justify-between text-xs">
+              {hasPrev ? (
+                <Link
+                  href={prevHref}
+                  className="rounded-md border border-card-border px-3 py-1.5 font-medium text-foreground hover:border-accent/50"
+                >
+                  {t("episodesPagePrev")}
+                </Link>
+              ) : (
+                <span className="rounded-md border border-card-border px-3 py-1.5 font-medium text-muted opacity-50">
+                  {t("episodesPagePrev")}
+                </span>
+              )}
+              <span className="text-muted">
+                {t("episodesPageLabel", { current: currentPage, total: totalPages })}
+              </span>
+              {hasNext ? (
+                <Link
+                  href={nextHref}
+                  className="rounded-md border border-card-border px-3 py-1.5 font-medium text-foreground hover:border-accent/50"
+                >
+                  {t("episodesPageNext")}
+                </Link>
+              ) : (
+                <span className="rounded-md border border-card-border px-3 py-1.5 font-medium text-muted opacity-50">
+                  {t("episodesPageNext")}
+                </span>
+              )}
+            </div>
+          ) : null}
         </aside>
       </div>
     </div>
