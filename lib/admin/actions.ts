@@ -283,3 +283,16 @@ export async function archiveMovieAction(formData: FormData) {
   revalidatePath(`/${locale}`, "layout");
   redirect(`/${locale}/admin/movies`);
 }
+
+export async function deleteMovieAction(formData: FormData) {
+  await ensureAdmin();
+  const locale = await getLocale();
+  const id = String(formData.get("id") ?? "");
+  if (!id) redirect(`/${locale}/admin/movies`);
+
+  // Episode rows are removed by ON DELETE CASCADE on the Episode.movieId FK.
+  await prisma.movie.delete({ where: { id } });
+
+  revalidatePath(`/${locale}`, "layout");
+  redirect(`/${locale}/admin/movies`);
+}

@@ -304,6 +304,8 @@
     "save": "Lưu",
     "create": "Tạo phim",
     "cancel": "Hủy",
-    "archive": "Lưu trữ (ẩn khỏi site)"
+    "archive": "Lưu trữ (ẩn khỏi site)",
+    "deleteForever": "Xóa vĩnh viễn",
+    "deleteConfirm": "Xóa vĩnh viễn phim \"{title}\"? Thao tác này không thể hoàn tác."
   }
 }

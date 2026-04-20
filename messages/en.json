@@ -304,6 +304,8 @@
     "save": "Save",
     "create": "Create",
     "cancel": "Cancel",
-    "archive": "Archive (hide from site)"
+    "archive": "Archive (hide from site)",
+    "deleteForever": "Delete permanently",
+    "deleteConfirm": "Permanently delete \"{title}\"? This cannot be undone."
   }
 }

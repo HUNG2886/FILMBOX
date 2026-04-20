@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { MovieDeleteForm } from "@/components/admin/MovieDeleteForm";
 import { MovieArchiveForm, MovieForm } from "@/components/admin/MovieForm";
 import { prisma } from "@/lib/prisma";
 
@@ -29,6 +30,12 @@ export default async function EditMoviePage({ params }: Props) {
       </h1>
       <MovieForm movie={m} episodes={m.episodesRel} />
       <MovieArchiveForm movieId={m.id} />
+      <MovieDeleteForm
+        movieId={m.id}
+        title={m.title}
+        label={t("deleteForever")}
+        confirmMessage={t("deleteConfirm", { title: m.title })}
+      />
     </div>
   );
 }
