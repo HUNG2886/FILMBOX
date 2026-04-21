@@ -20,7 +20,7 @@ export async function AccountPanel({ user, locale }: Props) {
 
   return (
     <div className="mx-auto w-full max-w-2xl space-y-6">
-      <section className="flex items-center gap-4 rounded-2xl border border-card-border bg-card p-5">
+      <section className="glass-panel gradient-border flex items-center gap-4 rounded-3xl p-5">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-gradient text-xl font-bold text-white">
           {initial}
         </div>
@@ -37,7 +37,7 @@ export async function AccountPanel({ user, locale }: Props) {
         {!vipActive && (
           <Link
             href="/account/vip"
-            className="btn-primary shrink-0 rounded-full px-4 py-2 text-sm font-semibold"
+            className="btn-primary shine-on-hover shrink-0 rounded-full px-4 py-2 text-sm font-semibold"
           >
             {tv("upgradeBtn")}
           </Link>
@@ -46,7 +46,7 @@ export async function AccountPanel({ user, locale }: Props) {
 
       <ChangePasswordForm />
 
-      <div className="rounded-2xl border border-card-border bg-card p-5">
+      <div className="glass-panel rounded-3xl p-5">
         <h2 className="mb-3 text-base font-semibold text-foreground">{t("sessionTitle")}</h2>
         <LogoutButton label={ta("signOut")} />
       </div>

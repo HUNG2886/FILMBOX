@@ -17,8 +17,12 @@ export function DocPageShell({ homeLabel, title, children }: Props) {
         <span className="mx-2">/</span>
         <span className="line-clamp-2 text-foreground">{title}</span>
       </nav>
-      <h1 className="mt-6 text-2xl font-bold text-foreground">{title}</h1>
-      <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted">{children}</div>
+      <h1 className="text-brand-gradient mt-6 text-3xl font-extrabold sm:text-4xl">
+        {title}
+      </h1>
+      <div className="glass-panel mt-6 space-y-4 rounded-2xl p-5 text-sm leading-relaxed text-muted sm:p-6">
+        {children}
+      </div>
       <p className="mt-10 text-sm text-muted">
         <Link href="/" className="text-accent hover:underline">
           ← {homeLabel}

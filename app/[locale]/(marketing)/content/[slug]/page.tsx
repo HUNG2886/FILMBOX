@@ -33,10 +33,14 @@ export default async function ArticlePage({ params }: Props) {
         <span className="mx-2">/</span>
         <span className="line-clamp-1 text-foreground">{a.title}</span>
       </nav>
-      <p className="mt-6 text-xs font-medium uppercase tracking-wide text-accent">{a.tag}</p>
-      <h1 className="mt-2 text-3xl font-bold text-foreground">{a.title}</h1>
+      <span className="chip-glass mt-6 !text-[10px] uppercase tracking-wide text-accent">
+        {a.tag}
+      </span>
+      <h1 className="text-brand-gradient mt-3 text-3xl font-extrabold sm:text-4xl">
+        {a.title}
+      </h1>
       <p className="mt-2 text-sm text-muted">{a.date}</p>
-      <div className="mt-8 max-w-none">
+      <div className="glass-panel mt-8 rounded-2xl p-5 sm:p-6">
         <p className="text-muted">{a.excerpt}</p>
         <p className="mt-4 text-sm leading-relaxed text-muted">{t("bodyPlaceholder")}</p>
       </div>

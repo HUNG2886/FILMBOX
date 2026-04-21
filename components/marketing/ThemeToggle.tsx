@@ -17,7 +17,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <span
-        className="inline-flex h-9 w-9 shrink-0 rounded-full border border-card-border bg-card"
+        className="glass-panel inline-flex h-9 w-9 shrink-0 rounded-full"
         aria-hidden
       />
     );
@@ -38,7 +38,7 @@ export function ThemeToggle() {
         });
       }}
       className={cn(
-        "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-card-border bg-card text-foreground transition hover:border-accent/50 hover:text-accent",
+        "glass-panel inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-foreground transition hover:border-accent/50 hover:text-accent",
       )}
       aria-label={isDark ? t("toLight") : t("toDark")}
       aria-pressed={isDark}

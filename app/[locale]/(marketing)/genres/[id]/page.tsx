@@ -38,7 +38,7 @@ export default async function GenreDetailPage({ params }: Props) {
         <span className="mx-2">/</span>
         <span className="text-foreground">{g.name}</span>
       </nav>
-      <h1 className="mt-4 text-2xl font-bold text-foreground">{g.name}</h1>
+      <h1 className="text-brand-gradient mt-4 text-3xl font-extrabold sm:text-4xl">{g.name}</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         {t("detailIntroBefore")}{" "}
         <code className="rounded bg-card px-1 py-0.5 text-xs">{g.replaceName}</code>

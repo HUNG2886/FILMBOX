@@ -53,18 +53,22 @@ export function SiteHeaderClient({ user }: Props) {
 
   return (
     <motion.header
-      className="sticky top-0 z-40 border-b border-card-border bg-background/90 backdrop-blur-md"
+      className="glass-panel-strong sticky top-0 z-40 border-b border-card-border/60"
       onKeyDown={onHeaderKeyDown}
       initial={reduceMotion ? false : { y: -24, opacity: 0 }}
       animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-brand-gradient opacity-60"
+      />
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 pb-3 pt-3 sm:px-6">
         <div className="flex items-center gap-2 sm:gap-3">
           <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/"
-              className="bg-brand-gradient flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm"
+              className="bg-brand-gradient flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-[0_0_22px_var(--glow)]"
               aria-label={th("brand")}
             >
               <span className="ml-0.5 inline-block h-0 w-0 border-y-[7px] border-l-[12px] border-y-transparent border-l-white" />
@@ -77,8 +81,8 @@ export function SiteHeaderClient({ user }: Props) {
             <Link
               href="/support"
               className={cn(
-                "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-card-border bg-card transition sm:h-10 sm:w-10",
-                tabActive(pathname, "/support") ? "text-foreground" : "text-muted hover:text-foreground",
+                "glass-panel inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition hover:border-accent/40 hover:text-accent sm:h-10 sm:w-10",
+                tabActive(pathname, "/support") ? "text-foreground" : "text-muted",
               )}
               aria-label={th("support")}
               title={th("support")}
@@ -90,8 +94,8 @@ export function SiteHeaderClient({ user }: Props) {
             <Link
               href="/account"
               className={cn(
-                "relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-card-border bg-card transition sm:h-10 sm:w-10",
-                accountActive ? "text-foreground" : "text-muted hover:text-foreground",
+                "glass-panel relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition hover:border-accent/40 hover:text-accent sm:h-10 sm:w-10",
+                accountActive ? "text-foreground" : "text-muted",
               )}
               aria-label={user ? user.email : th("account")}
               title={user ? user.email : th("account")}
@@ -118,7 +122,7 @@ export function SiteHeaderClient({ user }: Props) {
           <ThemeToggle />
           <motion.button
             type="button"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-card-border bg-card text-muted transition hover:text-foreground sm:hidden"
+            className="glass-panel inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted transition hover:border-accent/40 hover:text-accent sm:hidden"
             aria-label={menuOpen ? th("closeMenu") : th("openMenu")}
             aria-expanded={menuOpen}
             aria-controls={menuId}
@@ -165,7 +169,7 @@ export function SiteHeaderClient({ user }: Props) {
               animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
               transition={{ duration: 0.2 }}
-              className="rounded-xl border border-card-border bg-card p-3 sm:hidden"
+              className="glass-panel rounded-2xl p-3 sm:hidden"
             >
               <ul className="space-y-1 text-sm text-foreground">
                 <li>

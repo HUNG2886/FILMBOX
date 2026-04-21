@@ -31,7 +31,7 @@ export function SearchForm({ defaultValue = "", className }: Props) {
           type="search"
           placeholder={t("placeholder")}
           defaultValue={defaultValue}
-          className="h-10 w-full rounded-full border border-card-border bg-card px-3 py-2 pl-9 text-sm text-foreground placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/25 focus:outline-none"
+          className="glass-panel h-10 w-full rounded-full px-3 py-2 pl-9 text-sm text-foreground placeholder:text-muted transition focus:border-accent focus:shadow-[0_0_0_4px_color-mix(in_oklab,var(--accent),transparent_75%)] focus:outline-none"
         />
       </label>
     </form>

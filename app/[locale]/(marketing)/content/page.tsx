@@ -25,7 +25,7 @@ export default async function ContentPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+      <h1 className="text-brand-gradient text-3xl font-extrabold sm:text-4xl">{t("title")}</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted">
         {t("introBefore")}{" "}
         <code className="rounded bg-card px-1 py-0.5 text-xs">/content/[slug]</code>
@@ -36,7 +36,7 @@ export default async function ContentPage({
           <li key={a.slug}>
             <Link
               href={`/content/${a.slug}`}
-              className="block rounded-xl border border-card-border bg-card p-4 transition hover:border-accent/40"
+              className="glass-panel gradient-border-hover block rounded-2xl p-5 transition hover:-translate-y-0.5 hover:border-accent/40"
             >
               <p className="text-xs font-medium uppercase tracking-wide text-accent">{a.tag}</p>
               <h2 className="mt-1 text-lg font-semibold text-foreground">{a.title}</h2>

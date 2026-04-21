@@ -20,11 +20,11 @@ export async function VipPaywall({ user, locale, backHref, backLabel, nextPath }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <div className="rounded-3xl border border-card-border bg-card p-8 text-center shadow-sm">
+      <div className="glass-panel-strong gradient-border aurora-ring relative overflow-hidden rounded-[2rem] p-8 text-center shadow-[0_30px_60px_-25px_var(--glow)]">
         <div className="badge-vip-soft mx-auto flex h-16 w-16 items-center justify-center rounded-full">
           {user ? <Crown className="h-8 w-8" /> : <Lock className="h-8 w-8" />}
         </div>
-        <h1 className="mt-4 text-2xl font-bold text-foreground">
+        <h1 className="text-brand-gradient mt-4 text-2xl font-extrabold sm:text-3xl">
           {user ? t("vipOnlyTitle") : t("signInRequiredTitle")}
         </h1>
         <p className="mt-2 text-sm text-muted">
@@ -35,21 +35,21 @@ export async function VipPaywall({ user, locale, backHref, backLabel, nextPath }
           {user ? (
             <Link
               href="/account/vip"
-              className="btn-primary rounded-full px-5 py-2.5 text-sm font-semibold"
+              className="btn-primary shine-on-hover rounded-full px-6 py-3 text-sm font-semibold"
             >
               {t("upgradeCta")}
             </Link>
           ) : (
             <Link
               href={loginHref}
-              className="btn-primary rounded-full px-5 py-2.5 text-sm font-semibold"
+              className="btn-primary shine-on-hover rounded-full px-6 py-3 text-sm font-semibold"
             >
               {t("signInCta")}
             </Link>
           )}
           <Link
             href={backHref}
-            className="rounded-full border border-card-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-card"
+            className="chip-glass !px-5 !py-2.5 !text-sm font-semibold hover:text-accent"
           >
             ← {backLabel}
           </Link>

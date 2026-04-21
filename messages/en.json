@@ -47,6 +47,9 @@
     "socialYoutube": "Youtube",
     "socialTiktok": "Tiktok",
     "socialUnsetHint": "Set NEXT_PUBLIC_SOCIAL_* in .env to enable this link",
+    "ctaTitle": "Unlimited streaming with FilmBox VIP",
+    "ctaBody": "Unlock the full library, early episode drops, and no ads.",
+    "ctaAction": "Upgrade to VIP",
     "disclaimer": "© FilmBox. All rights reserved."
   },
   "Banner": {
@@ -74,7 +77,9 @@
     "trending": "Trending now",
     "featured": "Featured episodes",
     "seeMore": "See more",
-    "seeMoreTitle": "See more {title}"
+    "seeMoreTitle": "See more {title}",
+    "scrollPrev": "Scroll left",
+    "scrollNext": "Scroll right"
   },
   "Badge": {
     "exclusive": "Exclusive"

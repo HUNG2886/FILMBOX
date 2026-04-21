@@ -23,7 +23,7 @@ export default async function SearchPage({ searchParams, params }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+      <h1 className="text-brand-gradient text-3xl font-extrabold sm:text-4xl">{t("title")}</h1>
       <p className="mt-2 text-sm text-muted">
         {t("introBefore")}{" "}
         <code className="rounded bg-card px-1 py-0.5 text-xs">/search?q=...</code> {t("introAfter")}

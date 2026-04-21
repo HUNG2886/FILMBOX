@@ -18,7 +18,7 @@ export function UserLoginForm({ locale, error }: Props) {
   return (
     <form
       action={loginUserAction}
-      className="mx-auto mt-8 w-full max-w-sm space-y-4 rounded-2xl border border-card-border bg-card p-6 shadow-sm"
+      className="glass-panel gradient-border mx-auto mt-8 w-full max-w-sm space-y-4 rounded-3xl p-6 shadow-[0_20px_40px_-20px_var(--glow)]"
     >
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="next" value={nextPath} />
@@ -61,7 +61,7 @@ export function UserLoginForm({ locale, error }: Props) {
 
       <button
         type="submit"
-        className="btn-primary w-full rounded-full py-2.5 text-sm font-semibold"
+        className="btn-primary shine-on-hover w-full rounded-full py-2.5 text-sm font-semibold"
       >
         {t("signIn")}
       </button>

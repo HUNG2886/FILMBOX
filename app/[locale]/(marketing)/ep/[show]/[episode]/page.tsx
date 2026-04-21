@@ -110,16 +110,21 @@ export default async function EpisodePage({ params, searchParams }: Props) {
         </span>
       </nav>
 
-      <h1 className="mt-4 text-2xl font-bold text-foreground">{drama.title}</h1>
+      <h1 className="text-brand-gradient mt-4 text-2xl font-extrabold sm:text-3xl">
+        {drama.title}
+      </h1>
       <p className="mt-1 text-sm text-muted">
         {t("episodeLabel", { n: currentEpisode })}
-        {ep?.title ? <span className="ml-2 text-foreground">— {ep.title}</span> : null}
+        {ep?.title ? (
+          <span className="ml-2 text-foreground">— {ep.title}</span>
+        ) : null}
       </p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <div className="overflow-hidden rounded-xl border border-card-border bg-card">
+        <div className="glass-panel-strong cinematic-scanlines relative overflow-hidden rounded-2xl p-2 shadow-[0_30px_60px_-25px_var(--glow)]">
+          <div className="relative overflow-hidden rounded-[1rem]">
           {gated ? (
-            <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 bg-background p-6 text-center">
+            <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 bg-background/60 p-6 text-center">
               <div className="badge-vip-soft flex h-14 w-14 items-center justify-center rounded-full">
                 {user ? <Crown className="h-7 w-7" /> : <Lock className="h-7 w-7" />}
               </div>
@@ -167,9 +172,10 @@ export default async function EpisodePage({ params, searchParams }: Props) {
           ) : (
             <p className="p-4 text-sm text-muted">{t("noPlayback")}</p>
           )}
+          </div>
         </div>
 
-        <aside className="rounded-xl border border-card-border bg-card p-4">
+        <aside className="glass-panel rounded-2xl p-4">
           <h2 className="text-sm font-semibold text-foreground">{t("episodesListTitle")}</h2>
           <p className="mt-1 text-xs text-muted">
             {isSeries ? t("perEpisodeHint") : t("singleSourceHint")}
@@ -190,8 +196,8 @@ export default async function EpisodePage({ params, searchParams }: Props) {
                   title={label}
                   className={
                     active
-                      ? "relative flex aspect-square items-center justify-center rounded-md border border-accent bg-accent/15 text-xs font-semibold text-accent"
-                      : "relative flex aspect-square items-center justify-center rounded-md border border-card-border bg-background text-xs font-medium text-foreground hover:border-accent/50"
+                      ? "badge-vip-soft relative flex aspect-square items-center justify-center rounded-lg text-xs font-semibold text-accent shadow-[0_0_14px_var(--glow)]"
+                      : "glass-panel gradient-border-hover relative flex aspect-square items-center justify-center rounded-lg text-xs font-medium text-foreground transition hover:scale-[1.04] hover:border-accent/50"
                   }
                 >
                   {n}
@@ -213,12 +219,12 @@ export default async function EpisodePage({ params, searchParams }: Props) {
               {hasPrev ? (
                 <Link
                   href={prevHref}
-                  className="rounded-md border border-card-border px-3 py-1.5 font-medium text-foreground hover:border-accent/50"
+                  className="chip-glass font-medium text-foreground hover:text-accent"
                 >
                   {t("episodesPagePrev")}
                 </Link>
               ) : (
-                <span className="rounded-md border border-card-border px-3 py-1.5 font-medium text-muted opacity-50">
+                <span className="chip-glass font-medium text-muted opacity-50">
                   {t("episodesPagePrev")}
                 </span>
               )}
@@ -228,12 +234,12 @@ export default async function EpisodePage({ params, searchParams }: Props) {
               {hasNext ? (
                 <Link
                   href={nextHref}
-                  className="rounded-md border border-card-border px-3 py-1.5 font-medium text-foreground hover:border-accent/50"
+                  className="chip-glass font-medium text-foreground hover:text-accent"
                 >
                   {t("episodesPageNext")}
                 </Link>
               ) : (
-                <span className="rounded-md border border-card-border px-3 py-1.5 font-medium text-muted opacity-50">
+                <span className="chip-glass font-medium text-muted opacity-50">
                   {t("episodesPageNext")}
                 </span>
               )}

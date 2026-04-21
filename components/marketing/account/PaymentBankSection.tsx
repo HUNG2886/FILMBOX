@@ -84,10 +84,10 @@ export function PaymentBankSection({
   return (
     <section
       id="payment"
-      className="mt-10 scroll-mt-24 rounded-2xl border border-card-border bg-card p-6 shadow-sm"
+      className="glass-panel-strong mt-10 scroll-mt-24 rounded-3xl p-6 shadow-[0_24px_60px_-30px_var(--glow)]"
       aria-labelledby="payment-title"
     >
-      <h2 id="payment-title" className="text-xl font-semibold text-foreground">
+      <h2 id="payment-title" className="text-brand-gradient text-xl font-bold">
         {t("sectionTitle")}
       </h2>
 
@@ -101,10 +101,10 @@ export function PaymentBankSection({
             return (
               <label
                 key={p.id}
-                className={`cursor-pointer rounded-full border px-4 py-2 text-sm transition ${
+                className={`chip-glass cursor-pointer !px-4 !py-2 !text-sm transition ${
                   active
-                    ? "border-accent bg-accent/10 text-foreground"
-                    : "border-card-border text-muted hover:text-foreground"
+                    ? "border-accent/60 text-accent shadow-[0_0_12px_var(--glow)]"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 <input

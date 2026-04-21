@@ -45,12 +45,14 @@ export default async function VipUpgradePage({
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-foreground">{t("pageTitle")}</h1>
+        <h1 className="text-brand-gradient text-3xl font-extrabold sm:text-4xl">
+          {t("pageTitle")}
+        </h1>
         <p className="mt-3 text-sm text-muted">{t("pageSubtitle")}</p>
       </div>
 
       {!user && (
-        <div className="mt-6 rounded-2xl border border-warning/40 bg-warning/10 p-4 text-sm text-foreground">
+        <div className="glass-panel mt-6 rounded-2xl border-warning/40 p-4 text-sm text-foreground">
           {t("signInRequired")}{" "}
           <Link href="/account/login?next=/vip" className="font-semibold text-accent hover:underline">
             {t("signInLink")}
@@ -59,7 +61,7 @@ export default async function VipUpgradePage({
       )}
 
       {vipActive && user?.vipUntil && (
-        <div className="mt-6 rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm text-foreground">
+        <div className="glass-panel mt-6 rounded-2xl border-accent/40 p-4 text-sm text-foreground">
           {t("alreadyVip", { date: formatVipUntil(user.vipUntil, locale) })}
         </div>
       )}
@@ -68,10 +70,10 @@ export default async function VipUpgradePage({
         {PLANS.map((p) => (
           <div
             key={p.id}
-            className={`rounded-2xl border bg-card p-6 shadow-sm ${
+            className={`glass-panel rounded-3xl p-6 transition hover:border-accent/40 ${
               p.highlight
-                ? "border-accent ring-2 ring-accent/40"
-                : "border-card-border"
+                ? "gradient-border shadow-[0_20px_40px_-20px_var(--glow)]"
+                : ""
             }`}
           >
             <h2 className="text-lg font-semibold text-foreground">{t(`plan_${p.id}`)}</h2>
@@ -95,14 +97,14 @@ export default async function VipUpgradePage({
               <a
                 href="#payment"
                 data-plan={p.id}
-                className="btn-primary mt-6 block w-full rounded-full px-4 py-2 text-center text-sm font-semibold"
+                className="btn-primary shine-on-hover mt-6 block w-full rounded-full px-4 py-2.5 text-center text-sm font-semibold"
               >
                 {t("subscribeBtn")}
               </a>
             ) : (
               <Link
                 href={user ? "/account" : "/account/login?next=/vip"}
-                className="mt-6 block w-full rounded-full border border-card-border bg-background px-4 py-2 text-center text-sm font-semibold text-muted"
+                className="glass-panel mt-6 block w-full rounded-full px-4 py-2.5 text-center text-sm font-semibold text-muted transition hover:text-accent"
               >
                 {t("subscribeBtn")}
               </Link>
@@ -125,7 +127,7 @@ export default async function VipUpgradePage({
       )}
 
       {showPayment && !bank && (
-        <div className="mt-8 rounded-2xl border border-card-border bg-card p-5 text-sm text-muted">
+        <div className="glass-panel mt-8 rounded-2xl p-5 text-sm text-muted">
           <h3 className="mb-2 text-base font-semibold text-foreground">
             {t("payment.fallbackTitle")}
           </h3>

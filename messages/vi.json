@@ -47,6 +47,9 @@
     "socialYoutube": "Youtube",
     "socialTiktok": "Tiktok",
     "socialUnsetHint": "Thêm NEXT_PUBLIC_SOCIAL_* trong .env để bật liên kết",
+    "ctaTitle": "Xem phim không giới hạn cùng FilmBox VIP",
+    "ctaBody": "Mở khóa toàn bộ thư viện, xem sớm tập mới, không quảng cáo.",
+    "ctaAction": "Nâng cấp VIP",
     "disclaimer": "© FilmBox. Mọi quyền được bảo lưu."
   },
   "Banner": {
@@ -74,7 +77,9 @@
     "trending": "Đang hot hiện nay",
     "featured": "Tập phim đặc sắc",
     "seeMore": "Xem thêm",
-    "seeMoreTitle": "Xem thêm {title}"
+    "seeMoreTitle": "Xem thêm {title}",
+    "scrollPrev": "Cuộn sang trái",
+    "scrollNext": "Cuộn sang phải"
   },
   "Badge": {
     "exclusive": "Độc quyền"
